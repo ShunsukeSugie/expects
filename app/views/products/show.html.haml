@@ -31,7 +31,8 @@
   .provider-introduction__container
     .provider-introduction__container__right
       .provider-introduction__container__right--image
-        = image_tag("#{@product.user.user_profile.avatar}",class:"avatar-show")
+        -if @product.user.user_profile.avatar.present?
+          = image_tag("#{@product.user.user_profile.avatar}",class:"avatar-show")
       .provider-introduction__container__right--user-name
         = @product.user.nickname
 

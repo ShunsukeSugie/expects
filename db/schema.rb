@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_25_142301) do
+ActiveRecord::Schema.define(version: 2019_08_25_163810) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "prefecture_id", null: false
@@ -66,6 +66,16 @@ ActiveRecord::Schema.define(version: 2019_08_25_142301) do
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
+  create_table "reserves", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "status", default: 1, null: false
+    t.bigint "product_id", null: false
+    t.date "date", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["date"], name: "index_reserves_on_date"
+    t.index ["product_id"], name: "index_reserves_on_product_id"
+  end
+
   create_table "user_profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "last_name", null: false
     t.string "first_name", null: false
@@ -99,5 +109,6 @@ ActiveRecord::Schema.define(version: 2019_08_25_142301) do
   add_foreign_key "maps", "products"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "users"
+  add_foreign_key "reserves", "products"
   add_foreign_key "user_profiles", "users"
 end

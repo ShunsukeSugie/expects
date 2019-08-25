@@ -1,0 +1,24 @@
+.purchase-new__wrapper
+  #calendar
+  .form-data__wrapper
+    =form_with model:@reserve,url: reserves_path, method: "POST",local:true,class: "form-purchase-new" do |f|
+      .purchase-new__date-label
+        =f.label "予約日"
+      .purchase-new__date
+        %p
+          =f.hidden_field :date,class:"date-field",required:"required"
+      .purchase-new__member-label
+        = f.label "参加人数"
+      .purchase-new__join-member
+        =f.text_field :member,{class: "member-field",required: "required"}
+      .purchase-new__price-label
+        1人あたりの金額
+      .purchase-new__price
+        %p.price
+          #{@product.price}
+      .purchase-new__total-price-label
+        合計金額
+      .purchase-new__total-price
+        =f.text_field :price,{class:"price-field",required:"required"}
+      .purchase-new__submit
+        =f.submit "確認画面に進む",class:"purchase-submit"

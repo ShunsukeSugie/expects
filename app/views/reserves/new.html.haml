@@ -1,0 +1,44 @@
+.purchase-new__wrapper
+  #calendar.calender_reserve
+  .form-data__wrapper
+    =form_with model: @reserve,url: product_reserves_path, method: "POST",local:true,class: "form-purchase-new" do |f|
+      -# .purchase-new__date-label
+      -#   =f.label "予約日"
+      .purchase-new__date
+        %p
+          -if @reserves.present?
+            -@reserves.each do |reserve|
+              =f.hidden_field :date,multiple: true,name: "reserves[date][]",class:"date-field",required:"required",value:"#{reserve.date}"
+      .purchase-new__member-label
+        =f.hidden_field :status,value:1
+      -#   = f.label "参加人数"
+      -# .purchase-new__join-member
+      -#   -# =f.text_field :member,{class: "member-field",required: "required"}
+      -# .purchase-new__price-label
+      -#   1人あたりの金額
+      -# .purchase-new__price
+      -#   %p.price
+      -#     -# #{@product.price}
+      -# .purchase-new__total-price-label
+      -#   %p#confirm 予約可能日に設定しますか
+        
+      -# .purchase-new__total-price
+      -#   -# =f.text_field :price,{class:"price-field",required:"required"}
+      .purchase-new__submit
+        =f.submit "登録する",class:"purchase-submit"
+  .modal.js-modal
+    .modal__bg.js-modal-close
+    .modal__content
+      
+      %a.js-modal-close-btn{:href => ""} 
+      .button-wrapper
+        %p.left 登録する
+        %p.right 戻る
+  
+      
+
+
+            
+
+
+          
