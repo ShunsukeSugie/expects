@@ -1,4 +1,9 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create,:edit,:destroy]
+  def index
+    @products = Product.all.includes(:product_images).order("created_at DESC").limit(3)
+    @categories =Category.where(ancestry:nil)
+  end
   def new
     @product = Product.new
     @product.product_images.build

@@ -1,0 +1,73 @@
+=render "header"
+.product-wrapper
+  .main-image__container
+    =image_tag("#{Product.find(params[:id]).product_images[0].image}",class:"main-image")
+    .explain-container
+      .tag-container
+        .tag-container__name
+          =@product.name
+        .tag-container__category
+          =@product.category.parent.name
+          =@product.category.name
+      .tag-container-right
+        .tag-container-right__list
+          .tag-container-right__list-time
+            時間：#{@product.amount_of_time}
+          .tag-container-right__list-member
+            規定人数：#{@product.maximum_occupancy}
+          .tag-container-right__list-place
+            開催地域：#{@product.address.prefecture.name}
+          .tag-container-right__list-price
+            一人当たりの値段：#{@product.price}
+  %h2 体験できること
+  .desc-wrapper
+    =@product.description
+  %h2 イメージ
+  .sub-image__container
+    -@product.product_images.each do |image|
+      .sub-image__container__box
+        =image_tag("#{image.image}",class:"sub-image__container__box--image")
+  %h2 担当ホスト
+  .provider-introduction__container
+    .provider-introduction__container__right
+      .provider-introduction__container__right--image
+        = image_tag("#{@product.user.user_profile.avatar}",class:"avatar-show")
+      .provider-introduction__container__right--user-name
+        = @product.user.nickname
+
+    .provider-introduction__container__left
+      .provider-introduction__container__left--introduction
+        =@product.user.user_profile.introduction
+  %h2 目的地
+  .address-container
+    .address-container__map{:style => "width: 100%;"}
+      #map{:style => "width: 100%; height: 600px;"}
+    .address-container__desc
+      %p.map-address
+        目的地：#{@product.map.address}
+      %p.map-lat
+        =@product.map.latitude
+      %p.map-log
+        =@product.map.longitude
+
+
+.footer-reserve
+  .footer-reserve__left
+    .footer-reserve__left
+      .footer-reserve__left--img
+        = image_tag("#{@product.user.user_profile.avatar}",class:"footer-avatar")
+      .footer-reserve__left--name
+        =@product.user.nickname
+  .footer-reserve__right
+    -if user_signed_in? && current_user.present?&&current_user.id != @product.user_id 
+      .footer-reserve__right--button
+        =link_to "予約日程",product_reserves_path(@product.id),data: { "turbolinks"=> false }
+    -else
+      .footer-reserve__right--button
+        =link_to "編集",edit_product_path(id: @product.id)
+      .footer-reserve__right--button
+        =link_to "削除", new_product_reserve_path(@product.id)
+-# %script{async: "", defer: "defer", src: "https://maps.googleapis.com/maps/api/js?key=AIzaSyAZidI3fNXf9ae6BthptkqzwsTkTlQmI4E"}
+-# %script{src: "//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"}
+-# %script{src: "//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js", type: "text/javascript"}
+
