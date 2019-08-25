@@ -1,0 +1,44 @@
+.user-wrapper
+  = render 'users/sidebar'
+  .user-edit__box
+    =form_with model: current_user,url: user_profile_path(current_user), method: "PATCH",local:true do |f|
+      .user-edit__box__top
+        .user-edit__box__top--right
+          -if @user_profile.avatar == nil
+            =f.label "イメージ画像"
+            =f.file_field :avatar,accept:"image/*", class:"avatar_field",value:"#{@user_profile.avatar}"
+          -else 
+            =f.file_field :avatar,accept:"image/*",class:"avatar_field",value:"#{@user_profile.avatar}"
+            .avatar_box
+              =image_tag("#{@user_profile.avatar}",class:"avatar_image")
+        .user-edit__box__top--left
+          =f.text_field :nickname,value:"#{current_user.nickname}",class:"nickname_field"
+      .user-edit__box__bottom
+        .user-edit__box__bottom__description
+          =f.text_area :introduction,placeholder:"自己紹介文を作成してください",class:"description_field",value:"#{@user_profile.introduction}"
+        .user-edit__box__bottom__submit
+          =f.submit"編集する",class:"submit_user_edit"
+
+  .user-edit__box{id:"mail"}
+    .user-edit__box__wrapper
+      %h1 メール・パスワード
+      =form_with model: current_user,url: user_profile_path(current_user), method: "PATCH",local:true,class:"form-email" do |f|
+        .user-edit__box__wrapper__mail
+          =f.label"メールアドレス"
+          =f.email_field :email,value:"#{@current_user.email}",class:"text--email"
+        .user-edit__box__wrapper__password
+          =f.label"パスワード"
+          =f.password_field :password,class:"text--password",autocomplete:"password"
+        .user-edit__box__wrapper__password-c
+          =f.label "パスワード確認"
+          =f.password_field :password_confirmation,autocomplate:"password",maxlength:"16",minlengh:"8",class:"text--password-c"
+        .user-edit__box__bottom__submit
+          =f.submit"編集する",class:"submit_user_edit"
+  .user-edit__box{id:"phone_number"}
+    .user-edit__box__wrapper-phone
+      %h1 電話番号
+      =form_with model: current_user,url: user_profile_path(current_user), method: "PATCH",local:true,class:"form-phone" do |f|
+        .user-edit__box__wrapper-phone__form
+          =f.text_field :tel,class:"text--phone"
+        .user-edit__box__bottom__submit
+          =f.submit "編集する",class:"submit_user_edit"

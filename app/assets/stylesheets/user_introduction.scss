@@ -1,0 +1,107 @@
+.user-wrapper{
+  height:100%;
+  width:100%;
+  padding: 100px 0 300px 0;
+  display:flex;
+  background:$background;
+  // box-sizing:border-box;
+    
+}
+  .sidebar-user{
+    width:20%;
+    height:100%;
+    background:white;
+    margin:0 200px;
+    a{
+      display:inline-block;
+      text-decoration:none;
+      color:black;
+      font-size:18px;
+      width:100%;
+      border-bottom:1px solid $background;
+      &:hover{
+        background:lightblue;
+      }
+    }
+    li{
+      margin:10px 0;
+      font-size:18px;
+      list-style:none;
+      border-bottom:1px solid $background;
+      &:hover{
+        background:lightblue;
+      }
+    } 
+  }
+  .main-user-box-introduction{
+  @include main-user-box(auto);
+  background:white;
+  &__top{
+    height:200px;
+    display:flex;
+    border-bottom:1px solid $background;
+    &__left{
+      width:120px;
+      padding:20px;
+    
+    &__image{
+      @include image(100px ,100px);
+      border-radius:50%;
+      margin:0 auto;
+      line-height:200px;
+      .user-avatar{
+        @include image(100px ,100px);
+        border-radius:50%;
+      }
+
+    }
+    &__name{
+      margin-top:30px;
+      text-align:center;
+    }
+  }
+  }
+  &__middle-nil{
+    height:100px;
+    p{
+      text-align:center;
+      line-height:100px;
+    }
+  }
+  &__middle{
+    height:auto;
+    padding:20px;
+    
+    &__box{
+      letter-spacing:5px;
+      word-wrap: break-word;
+      height:auto;
+      margin-bottom:10px;
+      nav{
+        margin-top:20px;
+        color :black;
+      }
+    }
+    
+  }
+  &__bottom{
+  height:auto;
+  border-top:1px solid $background;
+  padding:30px;
+  justify-content: space-evenly;
+  display:flex;
+  flex-wrap:wrap;
+  .reserve-image{
+    @include image(150px,150px)
+  }
+  }
+  &__bottom-nil{
+    border-top:1px solid $background;;
+    height:100px;
+    p{
+      text-align:center;
+      line-height:100px;
+      margin:0;
+    }
+  }
+  }
