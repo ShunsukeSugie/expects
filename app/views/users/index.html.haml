@@ -1,0 +1,51 @@
+.user-wrapper
+  .sidebar-user
+    %ul.sidebar-user-ul
+      %li{id:"profile"}プロフィール
+      %li{id: "purchase"}予約済
+      %li{id: "review"}レビュー一覧
+      =link_to "ホストになる",new_product_path
+      =link_to  "プロフィール編集",edit_user_profile_path(current_user.id)
+      =link_to "ログアウト", destroy_user_session_path
+  .main-user-box-introduction
+    .main-user-box-introduction__top
+      .main-user-box-introduction__top__left
+        -unless @user.user_profile.avatar.present?||@user.user_profile.present?
+          =link_to "avatarを登録",edit_user_profile_path(current_user.id)
+        -else
+          .main-user-box-introduction__top__left__image
+            =image_tag("#{@user.user_profile.avatar}",class:"user-avatar")
+        .main-user-box-introduction__top__left__name
+          =@user.nickname
+        -# -unless @user.products.present?
+        -#   =@user.products.length
+      .main-user-box-introduction__top__right
+    -if @user.user_profile.introduction.presence
+      .main-user-box-introduction__middle
+        .main-user-box-introduction__middle__box
+          =@user.user_profile.introduction
+    -else 
+      .main-user-box-introduction__middle-nil
+        %p まだ記述していません
+    -if @products.present?
+      .main-user-box-introduction__bottom
+        - @products.each do |product| 
+          =link_to product_path(product) do
+            =image_tag("#{product.product_images[0].image}",class:"reserve-image")
+          .main-user-box-introduction__bottom__desc
+            =link_to"予約票",new_product_reserve_path(product.id),data: { "turbolinks"=> false}
+        = paginate(@products)
+     
+    -else 
+      .main-user-box-introduction__bottom-nil
+        %p まだホストになってません
+  .main-user-box-introduction
+    .main-user-box-introduction__bottom
+      %h2 予約済
+    -# -@user.purchases.present?
+      - @user.purchases.each do |purchase| 
+        =link_to product_path(purchase.product_id) do
+          =image_tag("#{purchase.product.product_images[0].image}",class:"reserve-image")
+          .main-user-box-introduction__bottom-desc
+           
+      

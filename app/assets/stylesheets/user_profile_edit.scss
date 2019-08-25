@@ -1,0 +1,146 @@
+.user-edit__box{
+  @include main-user-box(100%);
+  margin-bottom:100px;
+  &__top{
+    width:100%;
+    height:200px;
+    display:flex;
+    h2{
+      display:block;
+    }
+    &--right{
+      width:200px;
+      height:200px;
+      border-radius:50%;
+      background:white;
+      margin:20px 20px;
+      position:relative;
+      z-index:2;
+      .avatar_field{
+        width:100%;
+        height:100%;
+        opacity:0;
+        z-index:2;
+        position:relative;
+            }
+      .avatar_box{
+        width:100%;
+        height:100%;
+        position:absolute;
+        top:0;
+        .avatar_image{
+          @include image(200px, 200px);
+          border-radius:50%;
+        }
+      }
+   }
+   &--left{
+     line-height:300px;
+     margin-left:30px;
+   }
+  }
+  &__bottom{
+    margin-top:50px;
+    width:100%;
+    height:500px;
+    padding:20px;
+    box-sizing:border-box;
+    &__description{
+      width:calc(100%-40px);
+      height:400px - 40px;
+    .description_field{
+      width:100%;
+      height:400px - 40px;
+      padding:10px;
+      letter-spacing:5px;
+      font-size:18px;
+      box-sizing:border-box;
+
+    }
+  }
+  &__submit{
+    width:100%;
+    height:100px;
+    text-align:center;
+    line-height:100px;
+    margin-bottom:40px;
+    .submit_user_edit{
+      width:400px;
+      height:50px;
+      margin:40px ;
+      
+    }
+  }
+  }
+  &__wrapper{
+    height:50%;
+   h1{
+     width:100%;
+     text-align:center;
+   }
+    .form-email{
+      height:100%;
+    }
+    
+    &__mail{
+      width:400px;
+      height:50px;
+      margin:0 auto;
+      margin-bottom:50px;
+      .text--email{
+        width:400px;
+        height:50px;
+        margin-top:5px;
+        padding-left:20px;
+      }
+    }
+    &__password{
+      width:400px;
+      height:100px;
+      margin:50px auto;
+      .text--password{
+        width:400px;
+        height:50px;
+        margin-top:5px;
+        padding-left:20px;
+       
+      }
+    }
+    &__password-c{
+      width:400px;
+      height:100px;
+      margin:0 auto;
+      .text--password-c{
+        width:400px;
+        height:50px;
+        margin-top:5px;
+        padding-left:20px;
+       
+      }
+    }
+
+  }
+  &__wrapper-phone{
+    width:100%;
+    height:100%;
+    padding:30px;
+    box-sizing:border-box;
+    h1{
+      text-align:center;
+    }
+    &__form{
+      margin:0 auto;
+      height:50px;
+      text-align:center;
+      width:100%;
+      .text--phone{
+        box-sizing:border-box;
+        padding:10px;
+        height:50px;
+        width:100%;
+      }
+      
+    }
+  }
+  
+}

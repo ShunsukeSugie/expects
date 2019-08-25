@@ -1,0 +1,6 @@
+.sidebar-user
+  %ul.sidebar-user-ul
+    %li{id: "profile"}プロフィール
+    %li{id: "mail"}メール,パスワード
+    %li{id: "phone_number"}電話番号
+    =link_to"マイページ",users_path(current_user.id)
