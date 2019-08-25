@@ -1,0 +1,22 @@
+.header
+  .left-wrapper
+    .left-wrapper__logo experience
+  .right-wrapper
+    -if user_signed_in?
+      %nav.right-wrapper__nav
+        %ul.right-wrapper__nav__scorp
+          =link_to "top",root_path,class:"header_li"
+          %li.header_li
+            =link_to "体験","/"
+          =link_to "mypage",users_path,class:"header_li"
+          = link_to "ホストになる",new_product_path,class:"header_li"
+    -else
+      %nav.right-wrapper__nav
+        %ul.right-wrapper__nav__scorp
+          %li.header_li
+            =link_to "top","/"
+          %li.header_li
+            =link_to "体験","/"
+          =link_to "新規会員登録",new_user_registration_path,class:"header_li"
+          
+          =link_to "ログイン",new_user_session_path,class:"header_li"
