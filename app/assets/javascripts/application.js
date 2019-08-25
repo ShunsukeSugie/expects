@@ -20,3 +20,29 @@
 //= require fullcalendar
 // = require gmaps/google
 //= require_tree .
+$(document).ready(function(){
+  $('#calendar').fullCalendar({
+    // disableDragging: true,
+    editable: true,
+    showNonCurrentDates: true,
+  //   dayClick: function(date, allDay, jsEvent, view) {
+      
+  //       $('#calendar').fullCalendar('addEventSource', [{
+  //         　id:date,
+  //           title: '予約可能日',
+  //           start: date,
+  //           allDay: allDay,
+  //       }]);
+       
+      
+      
+  // },
+  // // イベントをクリックしたらタイトルをhogeに変える
+  // eventClick: function(calEvent, jsEvent, view) {
+  //     calEvent.title = 'hoge';
+  //     $('#calendar').fullCalendar('updateEvent', calEvent);
+  // }
+  });
+});
+
+

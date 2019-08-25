@@ -9,14 +9,15 @@ $(function(){
       console.log(gon.reserves);
       // $(".fc-future[data-date='2019-08-23']").remove();
       // $(".fc-future[data-date= '2019-08-23']").append(reserve);
-        if($('.date-field').val()==$('.fc-future').data()){
-          return
-        }else{
+        if($('.date-field').val()!=$('.fc-future').data()&&gon.reserves !=[]){
+        
+       
           gon.reserves.forEach(function(value,index){
             var v =value;
             var target= $('.fc-future').filter(`[data-date =${v}]`);
                target.append(reserve);
           });
+
         }
 
       var $target =$('.fc-future')

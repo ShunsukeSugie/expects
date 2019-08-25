@@ -6,7 +6,7 @@
     = csrf_meta_tags
     = csp_meta_tag
     %script{src: "https://js.pay.jp/", type: "text/javascript"}
-    %script{async: "", defer: "defer", src: "https://maps.googleapis.com/maps/api/js?key=ENV[GOOGLE_MAP_KEY]"}
+    %script{async: "", defer: "defer", src: "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_MAP_KEY']}"}
     %script{src: "//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"}
     %script{src: "//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js", type: "text/javascript"}
     = include_gon(init: true)
