@@ -9,15 +9,14 @@ $(function(){
       console.log(gon.reserves);
       // $(".fc-future[data-date='2019-08-23']").remove();
       // $(".fc-future[data-date= '2019-08-23']").append(reserve);
-        if($('.date-field').val()!=$('.fc-future').data()&&gon.reserves !=[]){
-        
-       
+        if($('.date-field').val()==$('.fc-future').data()){
+          return
+        }else{
           gon.reserves.forEach(function(value,index){
             var v =value;
             var target= $('.fc-future').filter(`[data-date =${v}]`);
                target.append(reserve);
           });
-
         }
 
       var $target =$('.fc-future')
@@ -56,12 +55,48 @@ $(function(){
             
           });
         }
+        function  openModal2(){
+          $(function(){
+            $('.js-modal2').fadeIn();
+            $('#calendar').css("opacity","0");
+            // $('.date-field').last().val(elements);
+          });
+       }
+        function closeModal2(){
+          $(function(){
+            $('.right2').click(function(){
+              // $('.date-field').val(elements);
+                $('#calendar').css("opacity","1");
+                $('.js-modal2').fadeOut();
+            });
+            $('.left2').click(function(){
+              console.log(elements);
+              console.log(ele)
+              var ele =$('.date-field').last().val();
+              var tag= $('.fc-future').filter(`[data-date =${elements}]`);
+                 tag.find('.fc-event').remove();;
+              $('.date-field').filter(`[value =${elements}]`).remove();
+              $('.date-data').remove();
+              $('#calendar').css("opacity","1");
+              $('.js-modal2').fadeOut();
+            });
+            
+          });
+        }
           if($(this).find('a').hasClass('fc-event')){
-            return
+            
+            $('.modal__content').append('<p class ="date-data"></p>');
+            $('.date-data').text(elements+"を予約不可にしますか?");
+            openModal2();
+            closeModal2();
+            
+            
+            console.log($('.date-data').length);
+           return
           }else{
             $(this).append(reserve);
           }
-          // ２回目以降の処理
+          //２回目以降の処理
         if($('.modal__content p').hasClass('date-data')){
           $('.date-data').text(elements+"を予約可能にしますか?");
           $('.purchase-new__date p').append('<input multiple="multiple" name="reserves[date][]" class="date-field" required="required" type="hidden" id="reserve_date"></input>');
@@ -117,7 +152,7 @@ $(function(){
       // })
     
     };
-    
+  
   });
       $(document).on('click', 'button', function(){
         $('#confirm').css("display","none");
@@ -153,7 +188,7 @@ $(function(){
             });
             $('.right').click(function(){
               console.log(elements);
-              var ele =$('.date-field').last().val();
+              // var ele =$('.date-field').last().val();
               var tag= $('.fc-future').filter(`[data-date =${ele}]`);
                  tag.find('.fc-event').remove();;
               $('.date-field').last().remove();
@@ -199,3 +234,4 @@ $(function(){
 };
   });
 });
+
