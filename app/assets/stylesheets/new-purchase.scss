@@ -88,6 +88,9 @@
   left:0;
   width: 100vw;
 }
+.madal2{
+  @extend .modal;
+}
 .modal__bg{
   background: rgba(0,0,0,0.8);
   height: 100vh;
@@ -124,6 +127,10 @@
         border-radius:$radius;
         color:white;
       }
+      .right2{
+        @extend .right;
+      }
+
     
     
       .left{
@@ -136,6 +143,9 @@
         border-radius:$radius;
         color:white;
         box-sizing:border-box;
+      }
+      .left2{
+        @extend .left;
       }
     
   }

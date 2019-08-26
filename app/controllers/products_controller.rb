@@ -80,4 +80,7 @@ end
   
     params.require(:product).permit(:name, :description, :category_id, :amount_of_time, :maximum_occupancy, :price, address_attributes:[:prefecture_id,:town,:town_number,:product_id,:address,:latitude,:longitude],product_images_attributes:[:image]).merge(user_id: current_user.id)
   end
+  def product_paramater
+    params.require(:product).permit(:name, :description, :category_id, :amount_of_time, :maximum_occupancy, :price, address_attributes:[:prefecture_id,:town,:town_number,:product_id],product_images_attributes:[:image]).merge(user_id: current_user.id)
+  end
 end
