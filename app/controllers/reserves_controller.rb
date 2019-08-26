@@ -34,7 +34,9 @@ class ReservesController < ApplicationController
   
   end
   def create
+     if params[:date] != nil
      
+  
     reserve_params.each do |reserve|
       @confirm = Reserve.where(product_id:params[:product_id]).find_by(date: reserve)
       
@@ -44,8 +46,11 @@ class ReservesController < ApplicationController
         @confirm.update(date:reserve,status:1,product_id: params[:product_id])
       end
     end
-    redirect_to root_path
+    
   end
+    redirect_to users_path
+  end
+  private
     def reserve_params
       params[:reserves][:date].each do |date|
        params.require(:reserve).permit(:date).merge(product_id:params[:product_id])

@@ -24,6 +24,27 @@ class ProductsController < ApplicationController
         redirect_to new_product_reserve_path(@product)
   end
 end
+def edit
+
+  @product = Product.find(params[:id])
+  @product_image =@product.product_images[0].image
+  gon.image =@product_image
+  
+end
+def update
+  @product =Product.find(params[:id])
+  if@product.update(product_paramater)
+  @address =  "#{@product.address.name+ @product.address.town + @product.address.town_number}"
+      if params[:product_images] != nil
+            params[:product_images][:image].each do |i|
+              @image = @product.product_images.update(image: i.tempfile, product_id: @product.id)
+            end
+          end
+    @map = Map.where(product_id:@product.id)
+    Map.update(address: @address,product_id:@product.id)
+    redirect_to root_path
+  end
+end
   def show
     
       @product = Product.find(params[:id])
@@ -46,6 +67,13 @@ end
       format.html
       format.json
    end
+  end
+  def destroy
+    @product.destroy
+    redirect_to root_path
+  end
+  def find_product
+    @product = Product.find(params[:id])
   end
   private
   def product_params
