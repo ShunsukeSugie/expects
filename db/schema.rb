@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_25_163810) do
+ActiveRecord::Schema.define(version: 2019_08_26_051606) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "prefecture_id", null: false
@@ -66,6 +66,17 @@ ActiveRecord::Schema.define(version: 2019_08_25_163810) do
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
+  create_table "purchases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "member", null: false
+    t.integer "price", null: false
+    t.bigint "reserve_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["reserve_id"], name: "index_purchases_on_reserve_id"
+    t.index ["user_id"], name: "index_purchases_on_user_id"
+  end
+
   create_table "reserves", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "status", default: 1, null: false
     t.bigint "product_id", null: false
@@ -109,6 +120,8 @@ ActiveRecord::Schema.define(version: 2019_08_25_163810) do
   add_foreign_key "maps", "products"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "users"
+  add_foreign_key "purchases", "reserves"
+  add_foreign_key "purchases", "users"
   add_foreign_key "reserves", "products"
   add_foreign_key "user_profiles", "users"
 end

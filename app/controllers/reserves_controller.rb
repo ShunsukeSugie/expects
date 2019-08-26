@@ -2,6 +2,8 @@ class ReservesController < ApplicationController
   before_action :authenticate_user!
   def index
     @product = Product.find(params[:product_id])
+   
+  if @product.reserves.present?
     @reserves = @product.reserves
     reserves =[]
       @reserves.each do |reserve|
@@ -18,6 +20,10 @@ class ReservesController < ApplicationController
     end
   
     gon.reserve_ids=reserve_ids
+else
+  flash.now[:error] = 'ただいま受付できません'
+  redirect_to product_path(@product.id),flash: {error:'ただいま受付できません' }
+end
   end
   
   def new
@@ -34,7 +40,7 @@ class ReservesController < ApplicationController
   
   end
   def create
-     if params[:date] != nil
+    # if params[:date] != nil
      
   
     reserve_params.each do |reserve|
@@ -47,7 +53,7 @@ class ReservesController < ApplicationController
       end
     end
     
-  end
+  
     redirect_to users_path
   end
   private
