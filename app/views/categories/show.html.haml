@@ -1,0 +1,19 @@
+=render "products/header"
+.category-show-wrapper
+  %h2
+    =@category.name
+  .category-links
+    -@category.children.each do |category|
+      =link_to category_path(category.id) do
+        .category-links__link
+          =category.name
+  .category-show-wrapper-product__container
+    -@products.each do |product|
+      .category-show-wrapper-product__container--box
+        =link_to product_path(product.id),class:"category-link-product" do
+          =image_tag("#{product.product_images[0].image}",class:"category-show-wrapper-product__container--box-image")
+          .category-show-wrapper-product__container--box__text
+            .category-show-wrapper-product__container--box__text--name
+              =product.name
+            .category-show-wrapper-product__container--box__text--price
+              ¥ #{product.price}

@@ -91,9 +91,21 @@
   justify-content: space-evenly;
   display:flex;
   flex-wrap:wrap;
-  .reserve-image{
-    @include image(150px,150px)
+  &--image{
+    height:200px;
+    width:150px;
+    .reserve-image{
+      @include image(150px,150px)
+    }
+    &__desc{
+      height:50px;
+      color:black;
+      text-align:center;
+      text-decoration:none;
+    }
+
   }
+  
   }
   &__bottom-nil{
     border-top:1px solid $background;;
