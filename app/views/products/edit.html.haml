@@ -1,0 +1,76 @@
+.new-header
+  .newheader__logo
+    = link_to "experiene",root_path,class:"header_li"
+.wrapper-new
+  = form_with model: @product,url:product_path(@product),html:{multipart: true, method: "PATCH"},class:"form-group",local: true do |f|
+    .images-container
+      .images-container__desc-box
+        .images-container__desc-box--label
+          イメージ画像
+        %span 必須
+      .images-container__desc
+        最大５枚まで
+      .images-container__boxes
+        .images-container__boxes__boxes
+        =f.fields_for :product_images[0] do |i|
+          #form-upload.form-upload
+            -@product.product_images.each do |image|
+              =i.label "ドラッグ&ドロップ",class:"label-desc"
+              = i.file_field :image,class:"upload-image" ,accept:"image/*",multiple: true,name: "product_images[image][]",id:"input-image",value:"#{image.image}"
+            -# =i.label "ドラッグ&ドロップ",class:"label-desc"
+            -# = i.file_field :image,class:"upload-image" ,accept:"image/*",multiple: true,name: "product_images[image][]",id:"input-image"
+            -# =i.label "ドラッグ&ドロップ",class:"label-desc"
+            -# = i.file_field :image,class:"upload-image" ,accept:"image/*",multiple: true,name: "product_images[image][]",id:"input-image"
+            -# =i.label "ドラッグ&ドロップ",class:"label-desc"
+            -# = i.file_field :image,class:"upload-image" ,accept:"image/*",multiple: true,name: "product_images[image][]",id:"input-image"
+    .form-container
+      .form-container__form--name
+        =f.label "title",class:"label--name"
+        %span  必須
+        =f.text_field :name,class:"text--name",placeholder:"title",require:"required",maxlength:"40",value:"#{@product.name}"
+      .form-container__form--desc
+        =f.label"体験詳細",class:"label--desc"
+        %span  必須
+        =f.text_area :description,class:"text--desc",placeholder:"体験詳細",required:"required",maxlength:"1000",value:"#{@product.description}"
+      =f.fields_for :address do |a|
+        .form-container__form--prefecture
+          .form-container__form--prefecture__desc
+            実施場所
+          .form-container__form--prefecture__group
+            .form-container__form--prefecture__group__label
+              = a.label "都道府県",class:"label--prefecture"
+            .form-container__form--prefecture__group__collection
+              = a.collection_select :prefecture_id,Prefecture.all,:id,:name,{include_blank:"---"},{class:"collection--prefecture",required:"required"}
+            .form-container__form--prefecture__group__city
+              =a.text_field :town,class:"product-address",placeholder:"市区町村を入力して下さい",required:"required",maxlength:"50"
+            .form-container__form--prefecture__group__number
+              = a.text_field :town_number,class:"product-town-number",placeholder:"番地を入力してください",required:"required",maxlength:"20"
+      .form-container__form--category
+        .form-container__form--category__desc
+          カテゴリー
+        .form-container__form--category__group
+          .form-container__form--category__group__label
+            =f.label "カテゴリー",class:"label--category"
+          .form-container__form--category__group__collection
+            = f.collection_select :category_id,Category.where(ancestry:nil),:id,:name,{include_blank:"---"},{class:"collection--category",required:"required"}
+          .form-container__form--category__group__collection
+            = f.collection_select :category_id,Category.find(1).children,:id,:name,{include_blank:"---"},{class:"collection--category-children",required:"required"}
+      .form-container__form--detail
+        .form-container__form--detail__desc
+          詳細
+        .form-container__form--detail__group
+          .form-container__form--detail__group__label
+            =f.label "所要時間",class:"label--detail-time"
+          .form-container__form--detail__group__collection
+            = f.select :amount_of_time,Product.amount_of_times.keys.to_a,{include_blank:"---"},{required:"required",class:"collection--detail-time"}
+          .form-container__form--detail__group__label
+            =f.label "人数",class:"label--detail-occunpacy"
+        
+          .form-container__form--detail__group__collection
+            = f.select :maximum_occupancy,Product.maximum_occupancies.keys.to_a,{include_blank:"---"},{required:"required",class:"collection--detail-occunpacy",}
+          .form-container__form--detail__group__price
+            %span 値段　
+            =f.text_field :price,class:"text-price",placeholder:"値段を入力",require:"required",maxlength:"10"
+      .form-container__form--submit
+        = f.submit "登録する",class:"form--submit"
+

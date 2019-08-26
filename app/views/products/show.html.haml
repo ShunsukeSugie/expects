@@ -67,7 +67,7 @@
       .footer-reserve__right--button
         =link_to "編集",edit_product_path(id: @product.id)
       .footer-reserve__right--button
-        =link_to "削除", new_product_reserve_path(@product.id)
+        =link_to "削除", product_path(@product.id),method:'delete'
 -# %script{async: "", defer: "defer", src: "https://maps.googleapis.com/maps/api/js?key=AIzaSyAZidI3fNXf9ae6BthptkqzwsTkTlQmI4E"}
 -# %script{src: "//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"}
 -# %script{src: "//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js", type: "text/javascript"}
