@@ -27,6 +27,8 @@ end
   end
   
   def new
+    @product = Product.find(params[:product_id])
+    if @product.user_id == current_user.id
     @reserves= Reserve.where(product_id:params[:product_id])
     reserves =[]
     @reserves.each do |reserve|
@@ -37,10 +39,13 @@ end
     
     @product = Product.find(params[:product_id])
     @reserve = Reserve.new
-  
+
+  else
+  redirect_to root_path,flash: {ban:'不正なアクセスです' }
+  end
   end
   def create
-    # if params[:date] != nil
+   
      
   
     reserve_params.each do |reserve|
