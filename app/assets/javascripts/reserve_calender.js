@@ -17,9 +17,19 @@ $(function(){
             var v =value;
             var target= $('.fc-future').filter(`[data-date =${v}]`);
                target.append(reserve);
+               gon.status.forEach(function(value,index){
+                if(i=index){
+                  console.log(value);
+                  console.log(target);
+                  target.attr('id', 'style'+value);
+
+                }
+
+              })
           });
         }
-
+         $('#style2').find('fc-title').text('売り切れ');
+         $('#style2').removeClass('fc-future');
       var $target =$('.fc-future')
       $('fc-future').append()
         $target.click(function() {

@@ -21,7 +21,7 @@ class ChatRoomsController < ApplicationController
     end
   end
   def create
-      
+    if @message
     @message = @group.messages.new(message_params)
     
     if @message.save

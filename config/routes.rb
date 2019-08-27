@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :purchases,only:[:new,:create,:show,:destroy] do
       collection do
         post 'pay', to: 'purchases#pay'
+        
       end 
     end
   end

@@ -84,6 +84,15 @@
     }
     
   }
+  &__bottom-nil{
+    border-top:1px solid $background;;
+    height:100px;
+    p{
+      text-align:center;
+      line-height:100px;
+      margin:0;
+    }
+  }
   &__bottom{
   height:auto;
   border-top:1px solid $background;
@@ -127,13 +136,5 @@
   }
   
   }
-  &__bottom-nil{
-    border-top:1px solid $background;;
-    height:100px;
-    p{
-      text-align:center;
-      line-height:100px;
-      margin:0;
-    }
-  }
+ 
   }

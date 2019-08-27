@@ -37,10 +37,9 @@
           .main-user-box-introduction__bottom--image__desc
             =link_to"予約票",new_product_reserve_path(product.id),data: { "turbolinks"=> false}
         = paginate(@products)
-     
-    -else 
-      .main-user-box-introduction__bottom-nil
-        %p まだホストになってません
+    -# -else
+    -#   .main-user-box-introduction__bottom-nil
+    -#     %p まだホストになってません
   .main-user-box-introduction
     .main-user-box-introduction__bottom
       %h2 予約済

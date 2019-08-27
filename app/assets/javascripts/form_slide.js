@@ -13,7 +13,7 @@ $(document).on('turbolinks:load', function(){
       }
       $showImage.fadeOut(3000).removeClass('active');
       $nextImage.fadeIn(3000).addClass('active')
-    }, 5000);
+    }, 5000).end();
   });
 
   });

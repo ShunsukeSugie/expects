@@ -94,6 +94,21 @@
           }
           .submit-return{
             width:50%;
+            background-color: #198fcc;
+            text-decoration:none;
+            border-radius: 2px;
+            width:110px;
+            height:27px;
+            display:inline-block;
+            background-color: #198fcc;
+            font-size:12px;
+            padding:6px 12px;
+            color:white !important;
+            text-decoration:none;
+            box-sizing:border-box;
+            text-align: center;
+            border: 1px solid #2FA0DC;
+            border-radius: 2px;
             .return-confirm{
               width:110px;
               height:27px;
@@ -101,12 +116,15 @@
               background-color: #198fcc;
               font-size:12px;
               padding:6px 12px;
-              color:white;
+              color:white !important;
               text-decoration:none;
               box-sizing:border-box;
               text-align: center;
               border: 1px solid #2FA0DC;
               border-radius: 2px;
+              a{
+                color:white!important;
+              }
             }
           }
         }
