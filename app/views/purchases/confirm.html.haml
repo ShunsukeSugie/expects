@@ -1,0 +1,56 @@
+.purchase-show__wrapper
+  .purchase-show__wrapper__container
+    .purchase-show__wrapper__container__right
+      .purchase-show__wrapper__container__right__product-image
+        =image_tag("#{@product.product_images[0].image}",class:"purchase-product-image")
+      .purchase-show__wrapper__container__right__product-title
+        =@product.name
+      .purchase-show__wrapper__container__right__product-time
+        %label 所要時間
+        =@product.amount_of_time
+      .purchase-show__wrapper__container__right__product-host
+        %p ホストは#{@product.user.nickname}さん
+        
+
+    .purchase-show__wrapper__container__left
+      .purchase-show__wrapper__container__left__customer-detail
+        .purchase-show__wrapper__container__left__customer-detail__name
+          =@customer.user_profile.last_name + @customer.user_profile.first_name
+        %p.purchase-show__wrapper__container__left__customer-detail__label-peopople
+          人数
+        .purchase-show__wrapper__container__left__customer-detail__people
+          =@purchase.member
+        %p.purchase-show__wrapper__container__left__customer-detail__label-email
+          email
+        .purchase-show__wrapper__container__left__customer-detail__email
+          =@customer.email
+        %p.purchase-show__wrapper__container__left__customer-detail__label-phone
+          電話番号
+        .purchase-show__wrapper__container__left__customer-detail__phone
+          =@customer.user_profile.tel
+
+      .purchase-show__wrapper__container__left__host-detail
+        .purchase-show__wrapper__container__left__host-detail__day
+          = @reserve.date
+        .purchase-show__wrapper__container__left__host-detail__pay-detail
+          .purchase-show__wrapper__container__left__host-detail__pay-detail--desc
+            =@product.price.to_s 
+            x
+            =@purchase.member
+          .purchase-show__wrapper__container__left__host-detail__pay-detail--total
+            
+        .purchase-show__wrapper__container__left__host-detail__pay-total
+          %label.purchase-show__wrapper__container__left__host-detail__pay-total--label
+            合計額
+          .purchase-show__wrapper__container__left__host-detail__pay-total--price
+            ¥ #{@product.price*= @purchase.member.to_i}
+
+        .purchase-show__wrapper__container__left__host-detail__submit
+          = form_tag(action: :pay, method: :post) do 
+            
+            %script.payjp-button{"data-key" => ENV['PAYJP_KEY'], :src => "https://checkout.pay.jp", :type => "text/javascript"}
+            .submit-return
+              =link_to "確認する",reserve_purchase_path,method:"DELETE"
+      
+
+  

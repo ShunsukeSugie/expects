@@ -20,6 +20,12 @@ class ReservesController < ApplicationController
     end
   
     gon.reserve_ids=reserve_ids
+  statuses =[]
+  @reserves.each do |reserve|
+     @status =reserve.status
+     statuses<<@status
+  end
+  gon.status = statuses
 else
   flash.now[:error] = 'ただいま受付できません'
   redirect_to product_path(@product.id),flash: {error:'ただいま受付できません' }
@@ -36,9 +42,14 @@ end
        reserves<<@reserve
     end
     gon.reserves =reserves
-    
     @product = Product.find(params[:product_id])
     @reserve = Reserve.new
+    statuses =[]
+    @reserves.each do |reserve|
+       @status =reserve.status
+       statuses<<@status
+    end
+    gon.status = statuses
 
   else
   redirect_to root_path,flash: {ban:'不正なアクセスです' }

@@ -10,15 +10,26 @@ $(function(){
       // $(".fc-future[data-date='2019-08-23']").remove();
       // $(".fc-future[data-date= '2019-08-23']").append(reserve);
         if($('.date-field').val()==$('.fc-future').data()){
+       
           return
         }else{
           gon.reserves.forEach(function(value,index){
             var v =value;
             var target= $('.fc-future').filter(`[data-date =${v}]`);
                target.append(reserve);
+               gon.status.forEach(function(value,index){
+                if(i=index){
+                  console.log(value);
+                  console.log(target);
+                  target.attr('id', 'style'+value);
+
+                }
+
+              })
           });
         }
-
+         $('#style2').find('fc-title').text('売り切れ');
+         $('#style2').removeClass('fc-future');
       var $target =$('.fc-future')
       $('fc-future').append()
         $target.click(function() {
@@ -86,6 +97,7 @@ $(function(){
           if($(this).find('a').hasClass('fc-event')){
             
             $('.modal__content').append('<p class ="date-data"></p>');
+            $('.date-data').next().remove();
             $('.date-data').text(elements+"を予約不可にしますか?");
             openModal2();
             closeModal2();
@@ -99,7 +111,7 @@ $(function(){
           //２回目以降の処理
         if($('.modal__content p').hasClass('date-data')){
           $('.date-data').text(elements+"を予約可能にしますか?");
-          $('.purchase-new__date p').append('<input multiple="multiple" name="reserves[date][]" class="date-field" required="required" type="hidden" id="reserve_date"></input>');
+          $('.purchase-new__date p').append('<input multiple="multiple" name="reserves[date][]" class="date-field" required="required" type="hidden" id="target_date"></input>');
           // $('.js-modal').fadeIn();
           // $('#calendar').css("opacity","0");
           // $('.date-field').last().val(elements);
@@ -108,7 +120,7 @@ $(function(){
         }else if($('.date-field').has('#reserve_date')){
           $('.modal__content').append('<p class ="date-data"></p>');
           $('.date-data').text(elements+"を予約可能にしますか?");
-          $('.purchase-new__date p').append('<input multiple="multiple" name="reserves[date][]" class="date-field" required="required" type="hidden" id="reserve_date"></input>');
+          $('.purchase-new__date p').append('<input multiple="multiple" name="reserves[date][]" class="date-field" required="required" type="hidden" id="target_date"></input>');
           // $('.js-modal').fadeIn();
           // $('#calendar').css("opacity","0");
           // $('.date-field').last().val(elements);
@@ -159,6 +171,7 @@ $(function(){
         var reserve = '<a class="fc-day-grid-event fc-h-event fc-event fc-start fc-end fc-draggable fc-resizable"><div class="fc-content"> <span class="fc-title">予約可能日</span></div><div class="fc-resizer fc-end-resizer"></div></a>';
         console.log(gon.reserves);
         if($('.date-field').val()==$('.fc-future').data()){
+        
           return
         }else{
           gon.reserves.forEach(function(value,index){
@@ -167,6 +180,10 @@ $(function(){
                target.append(reserve);
           });
         }
+        var s =$('#target_date').val();
+        console.log (s);
+      var t = $('.fc-future').filter(`[data-date =${s}]`);
+          t.append(reserve);
         $('.fc-future').click(function() {
           var elements =$(this).data('date');
           
@@ -201,21 +218,54 @@ $(function(){
             
           });
         }
+        function  openModal2(){
+          $(function(){
+            $('.js-modal2').fadeIn();
+            $('#calendar').css("opacity","0");
+            // $('.date-field').last().val(elements);
+          });
+       }
+        function closeModal2(){
+          $(function(){
+            $('.right2').click(function(){
+              // $('.date-field').val(elements);
+                $('#calendar').css("opacity","1");
+                $('.js-modal2').fadeOut();
+            });
+            $('.left2').click(function(){
+              console.log(elements);
+              console.log(ele)
+              var ele =$('.date-field').last().val();
+              var tag= $('.fc-future').filter(`[data-date =${elements}]`);
+                 tag.find('.fc-event').remove();;
+              $('.date-field').filter(`[value =${elements}]`).remove();
+              $('.date-data').remove();
+              $('#calendar').css("opacity","1");
+              $('.js-modal2').fadeOut();
+            });
+            
+          });
+        }
           if($(this).find('a').hasClass('fc-event')){
-            return
+            $('.modal__content').append('<p class ="date-data"></p>');
+            $('.date-data').next().remove();
+            $('.date-data').text(elements+"を予約不可にしますか?");
+            openModal2();
+            closeModal2();
+          return
           }else{
             $(this).append(reserve);
           }
         
         if($('.modal__content p').hasClass('date-data')){
           $('.date-data').text(elements+"を予約可能にしますか?");
-          $('.purchase-new__date p').append('<input multiple="multiple" name="reserves[date][]" class="date-field" required="required" type="hidden" id="reserve_date"></input>');
+          $('.purchase-new__date p').append('<input multiple="multiple" name="reserves[date][]" class="date-field" required="required" type="hidden" id="target_date"></input>');
           
          openModal();
         }else if($('.date-field').has('#reserve_date')){
           $('.modal__content').append('<p class ="date-data"></p>');
           $('.date-data').text(elements+"を予約可能にしますか?");
-          $('.purchase-new__date p').append('<input multiple="multiple" name="reserves[date][]" class="date-field" required="required" type="hidden" id="reserve_date"></input>');
+          $('.purchase-new__date p').append('<input multiple="multiple" name="reserves[date][]" class="date-field" required="required" type="hidden" id="target_date"></input>');
           // $('.js-modal').fadeIn();
           // $('#calendar').css("opacity","0");
           // $('.date-field').last().val(elements);

@@ -1,0 +1,137 @@
+.purchase-show__wrapper{
+  width:100vw;
+  height:100vh;
+  padding:200px;
+  background:lightgray;
+  box-sizing:border-box;
+
+  &__container{
+    height:100%;
+    width:100%;
+    background:white;
+    display:flex;
+    &__right{
+      height:100%;
+      width:30%;
+      padding:20px;
+      border-right:1px solid lightgray;
+      &__product-image{
+        @include image(200px ,150px);
+        margin:20px;
+        .purchase-product-image{
+          @include image(200px,150px);
+         
+        }
+      }
+      &__product-title{
+        margin:30px 20px 10px 20px;
+        word-wrap:wrap;
+        font-weight:bold;
+      }
+      &__product-time{
+      margin:10px 20px;;
+      }
+      &__product-host{
+        margin:10px 20px;
+      }
+    }
+    &__left{
+      display:flex;
+      width:70%;
+      height:100%;
+      &__customer-detail{
+        font-size:22px;
+        width:50%;
+        margin:30px;
+        box-sizing:border-box;
+      }
+      &__host-detail{
+        width:50%;
+        margin:20px;
+        
+        &__day{
+          font-size:20px;
+          height:50px;
+          border-bottom:1px solid lightgray;
+        }
+        &__pay-detail{
+          display:flex;
+          padding:20px;
+          margin-top:100px;
+          font-size:20px;
+      
+          
+          &--desc{
+            width:50%;
+            text-align:left;
+          }
+          &--total{
+            width:50%;
+            text-align:right;
+          }
+        }
+        &__pay-total{
+          display:flex;
+          padding:20px;
+          font-size:22px;
+          &--label{
+            width:50%;
+            text-align:left;
+          
+          }
+          &--price{
+            width:50%;
+            text-align:right;
+          }
+        }
+        &__submit{
+          height:60px;
+          margin-top:50px;
+          form{
+            display:flex;
+          #payjp_checkout_box{
+            width:50%;
+          }
+          .submit-return{
+            width:50%;
+            background-color: #198fcc;
+            text-decoration:none;
+            border-radius: 2px;
+            width:110px;
+            height:27px;
+            display:inline-block;
+            background-color: #198fcc;
+            font-size:12px;
+            padding:6px 12px;
+            color:white !important;
+            text-decoration:none;
+            box-sizing:border-box;
+            text-align: center;
+            border: 1px solid #2FA0DC;
+            border-radius: 2px;
+            .return-confirm{
+              width:110px;
+              height:27px;
+              display:inline-block;
+              background-color: #198fcc;
+              font-size:12px;
+              padding:6px 12px;
+              color:white !important;
+              text-decoration:none;
+              box-sizing:border-box;
+              text-align: center;
+              border: 1px solid #2FA0DC;
+              border-radius: 2px;
+              a{
+                color:white!important;
+              }
+            }
+          }
+        }
+      }
+      }
+    }
+  }
+
+}
+  

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_26_051606) do
+ActiveRecord::Schema.define(version: 2019_08_26_133908) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "prefecture_id", null: false
@@ -31,6 +31,22 @@ ActiveRecord::Schema.define(version: 2019_08_26_051606) do
     t.index ["name"], name: "index_categories_on_name"
   end
 
+  create_table "chat_members", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "chat_room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chat_room_id"], name: "index_chat_members_on_chat_room_id"
+    t.index ["user_id"], name: "index_chat_members_on_user_id"
+  end
+
+  create_table "chat_rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "purchase_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["purchase_id"], name: "index_chat_rooms_on_purchase_id"
+  end
+
   create_table "maps", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "address", null: false
     t.float "latitude"
@@ -41,6 +57,17 @@ ActiveRecord::Schema.define(version: 2019_08_26_051606) do
     t.index ["latitude"], name: "index_maps_on_latitude"
     t.index ["longitude"], name: "index_maps_on_longitude"
     t.index ["product_id"], name: "index_maps_on_product_id"
+  end
+
+  create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "content"
+    t.string "image"
+    t.bigint "chat_room_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chat_room_id"], name: "index_messages_on_chat_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "product_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -117,7 +144,12 @@ ActiveRecord::Schema.define(version: 2019_08_26_051606) do
   end
 
   add_foreign_key "addresses", "products"
+  add_foreign_key "chat_members", "chat_rooms"
+  add_foreign_key "chat_members", "users"
+  add_foreign_key "chat_rooms", "purchases"
   add_foreign_key "maps", "products"
+  add_foreign_key "messages", "chat_rooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "users"
   add_foreign_key "purchases", "reserves"

@@ -7,7 +7,7 @@ class Product < ApplicationRecord
   geocoded_by :address
   belongs_to :user
   has_many :reserves,dependent: :delete_all
-  has_one :purchase,dependent: :destroy
+  has_one :purchase,through: :reserves,dependent: :destroy
   with_options presence: true do
     validates :name, :description, :category_id, :amount_of_time, :maximum_occupancy, :price 
   end

@@ -46,3 +46,8 @@
   height:$height;
   background:white;
 }
+@mixin flexbox {
+  @each $prefix in $prefixes {
+    display: #{$prefix}flex;
+  }
+}

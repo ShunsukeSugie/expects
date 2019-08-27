@@ -8,7 +8,10 @@ class User < ApplicationRecord
   has_one :user_profile, dependent: :destroy
   has_many :products
   # has_many :reserves,dependent: :delete_all
-
+  has_many :messages
+  has_many :chat_members
+  has_many :chat_rooms,through: :chat_members
+  
   accepts_nested_attributes_for :user_profile
   has_many :purchases
   has_one :card

@@ -6,7 +6,8 @@ $(function(){
     e.preventDefault();
    
     var index = $('li').index(this);
-    $('.main-user-box-introduction ').eq(index).show().siblings('.main-user-box-introduction').hide();
+    console.log(index);
+    $('.main-user-box-introduction').eq(index-1).show().siblings('.main-user-box-introduction').hide();
 
   });
 });

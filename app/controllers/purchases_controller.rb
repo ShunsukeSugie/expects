@@ -6,67 +6,71 @@ class PurchasesController < ApplicationController
 
   def new
     user =current_user
-  @reserve =Reserve.find(params[:reserve_id])
-  @product=Product.find(@reserve.product_id)
+    @reserve =Reserve.find(params[:reserve_id])
+    @product=Product.find(@reserve.product_id)
 
-  @reserves = @product.reserves
- 
-  reserves =[]
-  @reserves.each do |reserve|
-     @date =reserve.date
-     reserves<<@date
-  end
-  gon.reserves =reserves
-  @purchase =Purchase.new
-  reserve_ids =[]
-  @reserves.each do |reserve|
-     @id =reserve.id
-     reserve_ids<<@id
-  end
+    @reserves = @product.reserves
+  
+    reserves =[]
+    @reserves.each do |reserve|
+      @date =reserve.date
+      reserves<<@date
+    end
+    gon.reserves =reserves
+    @purchase =Purchase.new
+    reserve_ids =[]
+    @reserves.each do |reserve|
+      @id =reserve.id
+      reserve_ids<<@id
+    end
 
-  gon.reserve_ids=reserve_ids
-  # card = current_user.card
-  #   Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-  #   customer = Payjp::Customer.retrieve(card.customer_id)
-  #   @default_card_information = customer.cards.retrieve(card.card_id)
+    gon.reserve_ids=reserve_ids
+    statuses =[]
+    @reserves.each do |reserve|
+      @status =reserve.status
+      statuses<<@status
+    end
+    gon.status = statuses
   end
   def create
-  @purchase =Purchase.create(purchase_params)
-
-  # logger.debug @purchase.errors.inspect
-  @purchase.save
-  redirect_to action: 'pay'
-
+    @purchase =Purchase.create(purchase_params)
+    redirect_to pay_reserve_purchases_path
 
   end
   def show
+    @purchase=Purchase.last
     @reserve =Reserve.find(params[:reserve_id])
     @product=Product.find(@reserve.product_id)
-  @purchase =Purchase.last
-  @customer = @product.user
-  # card = current_user.card
-
-
-  # @product = @purchase.product
+    @customer = @product.user
   end
   def destroy
-  if Purchase.last.destroy
-  redirect_to new_product_purchase_path
+    @purchase= Purchase.last
+    redirect_to reserve_purchases_path
   end
+  def confirm
+    @purchse = Purchase.new(purchase_params)
+    @reserve =Reserve.find(params[:reserve_id])
+    @product=Product.find(@reserve.product_id)
+    @purchase =Purchase.last
+    @customer = @product.user
+    redirect_to pay_reserve_purchases_path
   end
   def pay
-
-  @purchase =Purchase.last
-  price = Purchase.last.price 
-  # card = Purchase.last.user.card
-  Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
-  Payjp::Charge.create(
-  amount: price,
-  card: params['payjp-token'],
-  currency: 'jpy',
-  ) 
-  @reserve.update(status:2)
-  redirect_to root_path
+    @purchase =Purchase.last
+    price =@purchase.price
+    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+    Payjp::Charge.create(
+    amount: price,
+    card: params['payjp-token'],
+    currency: 'jpy',
+    ) 
+    ChatRoom.create(purchase_id:@purchase.id)
+    @chat_room =ChatRoom.last
+    @user =current_user
+    ChatMember.create(user_id:@product.id,chat_room_id:@chat_room.id)
+    ChatMember.create(user_id:@user.id,chat_room_id:@chat_room.id)
+    @reserve.update(status:2)
+    redirect_to root_path
   end
   private
   def purchase_params

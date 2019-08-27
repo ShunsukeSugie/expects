@@ -1,0 +1,33 @@
+.wrapper
+  .chat
+    .header2
+      .left-header
+        .left-header__title
+          = @reserve.date
+        %ul.left-header__members
+          Member：
+          %li.member
+          -if @chat_room.chat_members.present?
+            - @chat_room.chat_members.each do |member|
+              = member.user.nickname
+
+            
+        
+      .right-header
+        .right-header__button
+        -# = link_to edit_group_path(@group.id) do
+        -#   Edit
+    .messages
+      -if @messages.present?
+        =render @messages
+      
+
+    .form
+      = form_for [@chat_room, @message] do |f|
+        = f.text_field :content, class: 'form__message', id: 'new_message', placeholder: 'type a message'
+        .form__mask
+          = f.label :image, class: 'form__mask__image' do
+            -# = fa_icon 'picture-o', class: 'icon'
+            = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'form__submit'
+

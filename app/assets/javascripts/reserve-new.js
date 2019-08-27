@@ -9,6 +9,7 @@ $(function(){
         console.log(gon.reserves);
       // var links =`<a class="link-purchase" href =${link}></a>`;
           if($('.date-field').val()==$('.fc-future').data()){
+           
             return
           }else{
             gon.reserves.forEach(function(value,index){
@@ -17,24 +18,30 @@ $(function(){
               const i =index
               var target= $('.fc-future').filter(`[data-date =${v}]`);
               var e =   target.append(reserve);
-           
+             console.log(gon.status); 
+              gon.status.forEach(function(value,index){
+                  if(index ==i){
+                  target.addClass('style' + value);
+                  }
+              })
             gon.reserve_ids.forEach(function(value,index){
               (reserve);
               var s=value;
                 var links =`<a data-turbolinks="false" class="link-purchase" href ="/reserves/${s}/purchases/new"></a>`;
                 // target.append(links);
-            if(i+1 == s){
+              if(i+1 == s){
               target.append(links);
             }
               });
           });
           }
-          
+       
+          $('.style2').find('.fc-title').text('売り切れ');
+          $('.style2').removeClass('fc-future');
      var target = $('#calender').find('.fc-future')
     $('.fc-future').click(function() {
       // var elements =$(this).data('date');
     if($(this).find('a').hasClass('fc-event')){
-      return
         // $('.date-field').val(elements);
     if($('.purchase-new__date p').hasClass('date-data')){
       $('.date-data').text(elements);
@@ -57,6 +64,10 @@ $(function(){
       console.log(gon.reserves);
       // $(".fc-future[data-date='2019-08-23']").remove();
       // $(".fc-future[data-date= '2019-08-23']").append(reserve);
+      var s =$('#target_date').val();
+      console.log (s);
+      var t = $('.fc-future').filter(`[data-date =${s}]`);
+        t.append(reserve);
       if($('.date-field').val()==$('.fc-future').data()){
           return
         }else{

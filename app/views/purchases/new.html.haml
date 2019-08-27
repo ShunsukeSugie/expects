@@ -1,7 +1,7 @@
 .purchase-new__wrapper
   #calendar
   .form-data__wrapper
-    =form_with model: @purchase,url: reserve_purchases_path, method: "POST",local:true,class: "form-purchase-new" do |f|
+    =form_with model: @purchase,url: reserve_purchases_path(@reserve), method: "POST",local:true,class: "form-purchase-new" do |f|
       .purchase-new__date-label
         =f.label "予約日"
       .purchase-new__date

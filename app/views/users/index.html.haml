@@ -1,3 +1,4 @@
+=render 'products/header'
 .user-wrapper
   .sidebar-user
     %ul.sidebar-user-ul
@@ -30,22 +31,28 @@
     -if @products.present?
       .main-user-box-introduction__bottom
         - @products.each do |product| 
+        .main-user-box-introduction__bottom--image
           =link_to product_path(product) do
             =image_tag("#{product.product_images[0].image}",class:"reserve-image")
-          .main-user-box-introduction__bottom__desc
+          .main-user-box-introduction__bottom--image__desc
             =link_to"予約票",new_product_reserve_path(product.id),data: { "turbolinks"=> false}
         = paginate(@products)
-     
-    -else 
-      .main-user-box-introduction__bottom-nil
-        %p まだホストになってません
+    -# -else
+    -#   .main-user-box-introduction__bottom-nil
+    -#     %p まだホストになってません
   .main-user-box-introduction
     .main-user-box-introduction__bottom
       %h2 予約済
-    -# -@user.purchases.present?
+    -@purchases.present?
       - @user.purchases.each do |purchase| 
-        =link_to product_path(purchase.product_id) do
-          =image_tag("#{purchase.product.product_images[0].image}",class:"reserve-image")
-          .main-user-box-introduction__bottom-desc
+        .main-user-box-introduction__bottom__reserve-introduction
+          =link_to product_path(purchase.reserve.product_id) do
+            =image_tag("#{purchase.reserve.product.product_images[0].image}",class:"reserve-image")
+          .main-user-box-introduction__bottom__reserve-introduction--desc
+            =purchase.reserve.product.name
+            =purchase.reserve.date
+            - @user.chat_members.each do |member| 
+              =link_to "連絡を取る",chat_room_messages_path(ChatRoom.find(member.chat_room.id))
+              
            
       
