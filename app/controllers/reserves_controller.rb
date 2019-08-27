@@ -36,7 +36,6 @@ end
        reserves<<@reserve
     end
     gon.reserves =reserves
-    
     @product = Product.find(params[:product_id])
     @reserve = Reserve.new
 

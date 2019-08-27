@@ -59,6 +59,11 @@ class PurchasesController < ApplicationController
   @purchase =Purchase.last
   price = Purchase.last.price 
   # card = Purchase.last.user.card
+  ChatRoom.create(purchase_id:@purchase.id)
+  @chat_room =ChatRoom.last
+  @user =current_user
+  ChatMember.create(user_id:@product.id,chat_room_id:@chat_room.id)
+  ChatMember.create(user_id:@user.id,chat_room_id:@chat_room.id)
   Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
   Payjp::Charge.create(
   amount: price,

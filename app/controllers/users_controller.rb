@@ -3,6 +3,11 @@ class UsersController < ApplicationController
   def index
     @user = current_user
     @products = Product.where(user_id: @user.id).includes(:product_images).page(params[:page]).per(6)
+    @purchases =@user.purchases
+    
+    # chat_room
+    # @chat_rooms =@user.chat_member
+
   end
   def edit
   end

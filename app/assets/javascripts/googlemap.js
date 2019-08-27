@@ -2,8 +2,8 @@ document.addEventListener('turbolinks:load', function(e){
 e.preventDefault();
   var url   = location.href;
   var collect ="/\d";
-  var a =url.match("http://localhost:3000/products/[0-9]*?$");
-  var b =url.match("http://localhost:3000/products/[0-9]*?/[^a-zA-Z]+");
+  var a =url.match("^http://localhost:3000/products/[0-9]*?$");
+  var b =url.match("http://localhost:3000/products/[0-9]*?/");
   
     if(a){
      var handler = Gmaps.build('Google');

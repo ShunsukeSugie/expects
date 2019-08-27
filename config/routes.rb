@@ -17,6 +17,13 @@ Rails.application.routes.draw do
       end 
     end
   end
+  resources :chat_rooms, only: [:index,:new,:show ,:create] do
+    resources :messages, only: [:index, :create]
+    namespace :api do
+      resources :messages, only: :index, defaults: { format: 'json' }
+    end
+  end
+  resources :chat_members,only:[:new,:create]
   resources :categories,only:[:show]
   resources :addresses,only:[:show]
   resources :users, only: [:index, :edit, :new, :update]

@@ -9,6 +9,9 @@ $(function(){
         console.log(gon.reserves);
       // var links =`<a class="link-purchase" href =${link}></a>`;
           if($('.date-field').val()==$('.fc-future').data()){
+            var s =$('.date-field').val();
+            console.log (s);
+            $('.fc-future').filter(`[data-date =${s}]`);
             return
           }else{
             gon.reserves.forEach(function(value,index){
@@ -29,12 +32,14 @@ $(function(){
               });
           });
           }
-          
+          var s =$('.date-field').val();
+            console.log (s);
+          var t = $('.fc-future').filter(`[data-date =${s}]`);
+          t.append(reserve);
      var target = $('#calender').find('.fc-future')
     $('.fc-future').click(function() {
       // var elements =$(this).data('date');
     if($(this).find('a').hasClass('fc-event')){
-      return
         // $('.date-field').val(elements);
     if($('.purchase-new__date p').hasClass('date-data')){
       $('.date-data').text(elements);

@@ -105,6 +105,26 @@
     }
 
   }
+  &__reserve-introduction{
+    width:100%;
+    height:auto;
+    display:flex;
+    border:1px solid $background;
+    justify-content:space-between ;
+    line-height:40px;
+    a{
+      width:10%;
+    }
+    .reserve-image{
+      @include image(30px, 30px);
+      margin:10px;
+    }
+    &--desc{
+      margin:10px;
+      width:90%;
+
+    }
+  }
   
   }
   &__bottom-nil{
