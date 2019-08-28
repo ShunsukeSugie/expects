@@ -23,7 +23,7 @@ class ChatRoomsController < ApplicationController
   def create
     if @message
     @message = @group.messages.new(message_params)
-    
+    end
     if @message.save
       respond_to do |format|
         format.html {redirect_to chat_room_path(@group), notice: 'メッセージが送信されました'}
@@ -47,6 +47,5 @@ end
     binding.pry
     @group = ChatRoom.find_by(purchase_id:params[:purchase_id])
   end
-
 
 end
