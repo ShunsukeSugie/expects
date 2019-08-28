@@ -2,10 +2,10 @@ document.addEventListener('turbolinks:load', function(e){
 e.preventDefault();
   var url   = location.href;
   var collect ="/\d";
-  var a =url.match("^http://localhost:3000/products/[0-9]*?$");
+  var a =url.match("http://localhost:3000/products/[0-9]*?$");
   var b =url.match("http://localhost:3000/products/[0-9]*?/");
-  
-    if(a){
+  var c =url.match("[^http://localhost:3000/products/[0-9]*?/reserves]");
+    if(a||c){
      var handler = Gmaps.build('Google');
      
      handler.buildMap({
