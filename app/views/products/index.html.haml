@@ -6,29 +6,29 @@
   =image_tag("lake-4426212_1280.jpg",class: "product_main__image")
   =image_tag("landscape-4430276_1280.jpg",class: "product_main__image")
 
-.desc-wrapper
-  %h1.desc-wrapper__title 新しい体験を始めよう
-  %nav.nav-boxes
-    =link_to category_path(Category.find(5)) do
-      .nav-boxes__box
-        =image_tag("girl-791240_1280.jpg",class: "nav-boxes__box--image")
-        .nav-boxes__box--text
-          =Category.find(1).name
-    =link_to category_path(Category.find(6)) do
-      .nav-boxes__box
-        =image_tag("adventure-2548133_1280.jpg",class:"nav-boxes__box--image")
-        .nav-boxes__box--text
-          =Category.find(2).name
-    =link_to category_path(Category.find(7)) do
-      .nav-boxes__box
-        =image_tag("room-2192484_1280.jpg",class:"nav-boxes__box--image")
-        .nav-boxes__box--text
-          =Category.find(3).name
-    =link_to category_path(Category.find(8)) do
-      .nav-boxes__box
-        =image_tag("33333333333333.jpg",class:"nav-boxes__box--image")
-        .nav-boxes__box--text
-          =Category.find(4).name
+-# .desc-wrapper
+-#   %h1.desc-wrapper__title 新しい体験を始めよう
+-#   %nav.nav-boxes
+-#     =link_to category_path(Category.find(1)) do
+-#       .nav-boxes__box
+-#         =image_tag("girl-791240_1280.jpg",class: "nav-boxes__box--image")
+-#         .nav-boxes__box--text
+-#           =Category.find(1).name
+-#     =link_to category_path(Category.find(2)) do
+-#       .nav-boxes__box
+-#         =image_tag("adventure-2548133_1280.jpg",class:"nav-boxes__box--image")
+-#         .nav-boxes__box--text
+-#           =Category.find(2).name
+-#     =link_to category_path(Category.find(3)) do
+-#       .nav-boxes__box
+-#         =image_tag("room-2192484_1280.jpg",class:"nav-boxes__box--image")
+-#         .nav-boxes__box--text
+-#           =Category.find(3).name
+-#     =link_to category_path(Category.find(4)) do
+-#       .nav-boxes__box
+-#         =image_tag("33333333333333.jpg",class:"nav-boxes__box--image")
+-#         .nav-boxes__box--text
+-#           =Category.find(4).name
   %h1.desc-wrapper__recommendations
     あなたへのおすすめ 
   .desc-wrapper__prefectures
