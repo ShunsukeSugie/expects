@@ -1,7 +1,7 @@
 class ChatRoom < ApplicationRecord
-  has_many :chat_members
+  has_many :chat_members,dependent: :delete_all
   has_many :users, through: :chat_members
-  has_many :messages
+  has_many :messages,dependent: :delete_all
   belongs_to :purchase 
   def show_last_message
   if (last_message = messages.last).present?
