@@ -4,7 +4,7 @@
     %ul.sidebar-user-ul
       %li{id:"profile"}プロフィール
       %li{id: "purchase"}予約済
-      %li{id: "review"}レビュー一覧
+      %li{id: "review"}予約者ー一覧
       =link_to "ホストになる",new_product_path
       =link_to  "プロフィール編集",edit_user_profile_path(current_user.id)
       =link_to "ログアウト", destroy_user_session_path
@@ -53,6 +53,19 @@
             =purchase.reserve.date
             - @user.chat_members.each do |member| 
               =link_to "連絡を取る",chat_room_messages_path(ChatRoom.find(member.chat_room.id))
+  .main-user-box-introduction
+    .main-user-box-introduction__bottom
+      %h2 予約者一覧
+    -if@purchases.present?
+      - @user.purchases.each do |purchase| 
+        .main-user-box-introduction__bottom__reserve-introduction
+          =link_to product_path(purchase.reserve.product_id) do
+            =image_tag("#{purchase.reserve.product.product_images[0].image}",class:"reserve-image")
+          .main-user-box-introduction__bottom__reserve-introduction--desc
+            =purchase.reserve.product.name
+            =purchase.reserve.date
+            - @user.chat_members.each do |member| 
+              =link_to "連絡を取る",chat_room_messages_path(ChatRoom.find(member.chat_room.id))
               
-           
+          
       

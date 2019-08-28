@@ -1,12 +1,13 @@
 .user-wrapper{
+  @extend html;
   height:100%;
   width:100%;
-  padding: 100px 0 300px 0;
+  padding: 150px 0 600px 0;
   display:flex;
   background:$background;
   // box-sizing:border-box;
-    
-}
+   
+    }
   .sidebar-user{
     width:20%;
     height:100%;

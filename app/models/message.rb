@@ -1,6 +1,6 @@
 class Message < ApplicationRecord
   belongs_to :user
-  belongs_to :chat_room
+  belongs_to :chat_room 
   mount_uploader :image,UploadFileUploader
   def show_last_message
     if (last_message = messages.last).present?
