@@ -9,11 +9,27 @@ $(function(){
       console.log(gon.reserves);
       // $(".fc-future[data-date='2019-08-23']").remove();
       // $(".fc-future[data-date= '2019-08-23']").append(reserve);
+      var s =$('#target_date');
+      console.log(s)
+      if(s.length>0){
+        var v =$('#target_date').val();
+        console.log (v);
+      var t = $('.fc-future').filter(`[data-date =${v}]`);
+      v.forEach(function(value,index){
+        
+        var s =value;
+        console.log(s)
+        var t = $('.fc-future').filter(`[data-date =${s}]`);
+        t.append(reserve);
+      })
+      }
+    
         if($('.date-field').val()==$('.fc-future').data()){
        
           return
         }else{
           gon.reserves.forEach(function(value,index){
+            
             var v =value;
             var target= $('.fc-future').filter(`[data-date =${v}]`);
                target.append(reserve);
@@ -170,6 +186,20 @@ $(function(){
         $('#confirm').css("display","none");
         var reserve = '<a class="fc-day-grid-event fc-h-event fc-event fc-start fc-end fc-draggable fc-resizable"><div class="fc-content"> <span class="fc-title">予約可能日</span></div><div class="fc-resizer fc-end-resizer"></div></a>';
         console.log(gon.reserves);
+        var s =$('#target_date');
+        if(s.length>1){
+          var s =$('#target_date').val();
+          console.log (s);
+        var t = $('.fc-future').filter(`[data-date =${s}]`);
+        s.forEach(function(value,index){
+          
+          var s =value;
+          var t = $('.fc-future').filter(`[data-date =${s}]`);
+          t.append(reserve);
+        })
+        
+          };
+      
         if($('.date-field').val()==$('.fc-future').data()){
         
           return
