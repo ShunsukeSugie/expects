@@ -1,7 +1,8 @@
 $(function(){
 
   $(document).on('turbolinks:load', function(){
-    // $('.fc-day').css("background","gray");
+    $('.fc-past').css("background","lightgray");
+
     var url   = location.href;
     if(url.match('http://localhost:3000/products/[0-9]*?/reserves/new')){
       $('#confirm').css("display","none");
@@ -9,20 +10,8 @@ $(function(){
       console.log(gon.reserves);
       // $(".fc-future[data-date='2019-08-23']").remove();
       // $(".fc-future[data-date= '2019-08-23']").append(reserve);
-      var s =$('#target_date');
-      console.log(s)
-      if(s.length>0){
-        var v =$('#target_date').val();
-        console.log (v);
-      var t = $('.fc-future').filter(`[data-date =${v}]`);
-      v.forEach(function(value,index){
-        
-        var s =value;
-        console.log(s)
-        var t = $('.fc-future').filter(`[data-date =${s}]`);
-        t.append(reserve);
-      })
-      }
+      
+      
     
         if($('.date-field').val()==$('.fc-future').data()){
        
@@ -35,8 +24,7 @@ $(function(){
                target.append(reserve);
                gon.status.forEach(function(value,index){
                 if(i=index){
-                  console.log(value);
-                  console.log(target);
+      
                   target.attr('id', 'style'+value);
 
                 }
@@ -97,8 +85,7 @@ $(function(){
                 $('.js-modal2').fadeOut();
             });
             $('.left2').click(function(){
-              console.log(elements);
-              console.log(ele)
+              
               var ele =$('.date-field').last().val();
               var tag= $('.fc-future').filter(`[data-date =${elements}]`);
                  tag.find('.fc-event').remove();;
@@ -119,7 +106,7 @@ $(function(){
             closeModal2();
             
             
-            console.log($('.date-data').length);
+           
            return
           }else{
             $(this).append(reserve);
@@ -127,7 +114,7 @@ $(function(){
           //２回目以降の処理
         if($('.modal__content p').hasClass('date-data')){
           $('.date-data').text(elements+"を予約可能にしますか?");
-          $('.purchase-new__date p').append('<input multiple="multiple" name="reserves[date][]" class="date-field" required="required" type="hidden" id="target_date"></input>');
+          $('.purchase-new__date p').append('<input multiple="multiple" name="reserves[date][]" class="date-field target_date" required="required" type="hidden" id="target_date"></input>');
           // $('.js-modal').fadeIn();
           // $('#calendar').css("opacity","0");
           // $('.date-field').last().val(elements);
@@ -136,7 +123,7 @@ $(function(){
         }else if($('.date-field').has('#reserve_date')){
           $('.modal__content').append('<p class ="date-data"></p>');
           $('.date-data').text(elements+"を予約可能にしますか?");
-          $('.purchase-new__date p').append('<input multiple="multiple" name="reserves[date][]" class="date-field" required="required" type="hidden" id="target_date"></input>');
+          $('.purchase-new__date p').append('<input multiple="multiple" name="reserves[date][]" class="date-field target_date" required="required" type="hidden" id="target_date"></input>');
           // $('.js-modal').fadeIn();
           // $('#calendar').css("opacity","0");
           // $('.date-field').last().val(elements);
@@ -185,21 +172,26 @@ $(function(){
       $(document).on('click', 'button', function(){
         $('#confirm').css("display","none");
         var reserve = '<a class="fc-day-grid-event fc-h-event fc-event fc-start fc-end fc-draggable fc-resizable"><div class="fc-content"> <span class="fc-title">予約可能日</span></div><div class="fc-resizer fc-end-resizer"></div></a>';
-        console.log(gon.reserves);
-        var s =$('#target_date');
-        if(s.length>1){
-          var s =$('#target_date').val();
-          console.log (s);
-        var t = $('.fc-future').filter(`[data-date =${s}]`);
-        s.forEach(function(value,index){
-          
-          var s =value;
-          var t = $('.fc-future').filter(`[data-date =${s}]`);
-          t.append(reserve);
-        })
+        $('.fc-past').css("background","lightgray");
+        var target_date =$('.purchase-new__date p').children('#target_date').val();
+        console.log(target_date);
+        // t.append(reserve);
         
-          };
-      
+        // var b = elem.siblings();
+        // console.log(b);
+        　var arr=$("[id=target_date]");
+        $('.target_date').each(function(index,elem){
+          // console.log(i);
+          // console.log(elem);
+          // debugger
+          var tag=$('.target_date').eq(index).val();
+          var i =index
+          console.log(tag);
+          $('.fc-future').filter(`[data-date =${tag}]`).append(reserve);
+          
+          console.log(i);
+        });
+        
         if($('.date-field').val()==$('.fc-future').data()){
         
           return
@@ -210,10 +202,10 @@ $(function(){
                target.append(reserve);
           });
         }
-        var s =$('#target_date').val();
-        console.log (s);
-      var t = $('.fc-future').filter(`[data-date =${s}]`);
-          t.append(reserve);
+      //   var s =$('#target_date').val();
+      //   console.log (s);
+      // var t = $('.fc-future').filter(`[data-date =${s}]`);
+      //     t.append(reserve);
         $('.fc-future').click(function() {
           var elements =$(this).data('date');
           
@@ -235,7 +227,7 @@ $(function(){
             });
             $('.right').click(function(){
               console.log(elements);
-              // var ele =$('.date-field').last().val();
+              var ele =$('.date-field').last().val();
               var tag= $('.fc-future').filter(`[data-date =${ele}]`);
                  tag.find('.fc-event').remove();;
               $('.date-field').last().remove();
