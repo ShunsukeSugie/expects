@@ -3,9 +3,10 @@ e.preventDefault();
   var url   = location.href;
   var collect ="/\d";
   var a =url.match("http://localhost:3000/products/[0-9]*?$");
-  var b =url.match("http://localhost:3000/products/[0-9]*?/");
+  var b =url.match("https://expects.herokuapp.com/products/[0-9]*?/");
   var c =url.match("[^http://localhost:3000/products/[0-9]*?/reserves]");
-    if(a||c){
+  var d =url.match("[^https://expects.herokuapp.com/products/[0-9]*?/reserves]");
+    if(a||b||c||d){
      var handler = Gmaps.build('Google');
      
      handler.buildMap({
