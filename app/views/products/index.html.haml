@@ -9,6 +9,7 @@
 .desc-wrapper
   %h1.desc-wrapper__title 新しい体験を始めよう
   %nav.nav-boxes
+<<<<<<< Updated upstream
   -#   =link_to category_path(Category.find(2)) do
   -#     .nav-boxes__box
   -#       =image_tag("girl-791240_1280.jpg",class: "nav-boxes__box--image")
@@ -52,6 +53,51 @@
   -#       =image_tag("japan-3664500_1280.jpg",class: "desc-wrapper__prefectures__box--image")
   -#   .desc-wrapper__prefectures__box
   -#     =image_tag("umi.jpg",class: "desc-wrapper__prefectures__box--image")
+=======
+    =link_to category_path(Category.find(2)) do
+      .nav-boxes__box
+        =image_tag("girl-791240_1280.jpg",class: "nav-boxes__box--image")
+        .nav-boxes__box--text
+          =Category.find(2).name
+    =link_to category_path(Category.find(12)) do
+      .nav-boxes__box
+        =image_tag("adventure-2548133_1280.jpg",class:"nav-boxes__box--image")
+        .nav-boxes__box--text
+          =Category.find(12).name
+    =link_to category_path(Category.find(22)) do
+      .nav-boxes__box
+        =image_tag("room-2192484_1280.jpg",class:"nav-boxes__box--image")
+        .nav-boxes__box--text
+          =Category.find(22).name
+    =link_to category_path(Category.find(32)) do
+      .nav-boxes__box
+        =image_tag("33333333333333.jpg",class:"nav-boxes__box--image")
+        .nav-boxes__box--text
+          =Category.find(32).name
+  %h1.desc-wrapper__recommendations
+    あなたへのおすすめ 
+  .desc-wrapper__prefectures
+    .desc-wrapper__prefectures__box
+      -if Address.where(Prefecture_id: 13).first.present?
+        =link_to address_path(Address.where(Prefecture_id: 13).first.id) do
+          =image_tag("japan-4141578_1280.jpg",class: "desc-wrapper__prefectures__box--image")
+      -else
+        =image_tag("japan-4141578_1280.jpg",class: "desc-wrapper__prefectures__box--image")
+    .desc-wrapper__prefectures__box
+      -if Address.where(Prefecture_id: 47).first.present?
+        =link_to address_path(Address.where(Prefecture_id: 47).first.id) do
+          =image_tag("japan-1432858_1280.jpg",class: "desc-wrapper__prefectures__box--image")
+      -else
+        =image_tag("japan-1432858_1280.jpg",class: "desc-wrapper__prefectures__box--image")
+    .desc-wrapper__prefectures__box
+      -if Address.where(Prefecture_id: 14).first.present?
+        =link_to address_path(Address.where(Prefecture_id: 14).first.id) do
+          =image_tag("japan-3664500_1280.jpg",class: "desc-wrapper__prefectures__box--image")
+      -else
+        =image_tag("japan-3664500_1280.jpg",class: "desc-wrapper__prefectures__box--image")
+    .desc-wrapper__prefectures__box
+      =image_tag("umi.jpg",class: "desc-wrapper__prefectures__box--image")
+>>>>>>> Stashed changes
   %h1.desc-wrapper__recommendations__experience 
     PICK UP 
   .desc-wrapper__experiences
