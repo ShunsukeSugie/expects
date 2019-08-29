@@ -9,6 +9,10 @@ $light_blue: #38AEF0;
 $light_gray: #999;
 $black: #434a54;
 $alert_orange: #F35500;
+$text-shadow:  2px 4px 3px rgba(0,0,0,0.3);
+
+
+
 .wrapper {    
   
   @include flexbox;

@@ -13,22 +13,26 @@
     height:100%;
     background:white;
     margin:0 200px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
     a{
       display:inline-block;
       text-decoration:none;
       color:black;
-      font-size:18px;
+      font-size:20px;
       width:100%;
       border-bottom:1px solid $background;
+      text-shadow: 2px 2px 1px gray;
+      margin:5px 0;
       &:hover{
         background:lightblue;
       }
     }
     li{
       margin:10px 0;
-      font-size:18px;
+      font-size:20px;
       list-style:none;
       border-bottom:1px solid $background;
+      text-shadow: 2px 2px 1px gray;
       &:hover{
         background:lightblue;
       }
@@ -36,6 +40,7 @@
   }
   .main-user-box-introduction{
   @include main-user-box(auto);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
   background:white;
   &__top{
     height:200px;
