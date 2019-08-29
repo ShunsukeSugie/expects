@@ -2,9 +2,9 @@
 .user-wrapper
   .sidebar-user
     %ul.sidebar-user-ul
-      %li{id:"profile"}プロフィール
-      %li{id: "purchase"}予約済
-      %li{id: "review"}予約者ー一覧
+      %li.side{id:"profile"}プロフィール
+      %li.side{id: "purchase"}予約済
+      %li.side{id: "review"}予約者ー一覧
       =link_to "ホストになる",new_product_path
       =link_to  "プロフィール編集",edit_user_profile_path(current_user.id)
       =link_to "ログアウト", destroy_user_session_path
