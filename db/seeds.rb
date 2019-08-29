@@ -7,13 +7,13 @@ parent_id6 = %w{ショッピング 食 工場見学 鑑賞}
 parent_id7 =%w{起業 就職 ビジネス 資格 IT 著名人}
 parent_id5.each do |category|
 
- Category.create!(name:category,parent_id:1)
+ Category.create!(name:category,parent_id:2)
 end
 
 parent_id6.each do |category|
-  Category.create!(name:category,parent_id:2)
+  Category.create!(name:category,parent_id:12)
 end
 
 parent_id7.each do |category|
-  Category.create!(name:category,parent_id:3)
+  Category.create!(name:category,parent_id:22)
 end
