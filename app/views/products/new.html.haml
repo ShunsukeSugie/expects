@@ -51,7 +51,7 @@
           .form-container__form--category__group__label
             =f.label "カテゴリー",class:"label--category"
           .form-container__form--category__group__collection
-            = f.collection_select :category_id,Category.where(ancestry:nil),:id,:name,{include_blank:"---"},{class:"collection--category",required:"required"}
+            = f.collection_select :category_id,Category.where(parent_id:nil),:id,:name,{include_blank:"---"},{class:"collection--category",required:"required"}
           .form-container__form--category__group__collection
             = f.collection_select :category_id,Category.find(1).children,:id,:name,{include_blank:"---"},{class:"collection--category-children",required:"required"}
       .form-container__form--detail
