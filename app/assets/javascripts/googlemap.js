@@ -28,8 +28,8 @@ e.preventDefault();
       markers = handler.addMarkers([
         {
          
-          "lat": 35.6851750,
-          "lng": 139.7527995,
+          "lat": box,
+          "lng": desk,
           "infowindow":address
          
         }
