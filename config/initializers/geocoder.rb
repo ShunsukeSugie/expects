@@ -7,7 +7,7 @@ Geocoder.configure(
   language: :ja,
   # to use an API key:
   api_key: ENV['GEOCORDER'],
-  use_https: true
+  use_https: true,
   # geocoding service request timeout, in seconds (default 3):
   timeout: 5,
 
