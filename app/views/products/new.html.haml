@@ -1,6 +1,6 @@
 .new-header
   .newheader__logo
-    = link_to "experiene",root_path,class:"header_li"
+    = link_to "experiene",root_path,class:"header_logo"
 .wrapper-new
   = form_with model: @product,url: products_path,html:{multipart: true, method: "POST"},class:"form-group",local: true do |f|
     .images-container
@@ -51,9 +51,9 @@
           .form-container__form--category__group__label
             =f.label "カテゴリー",class:"label--category"
           .form-container__form--category__group__collection
-            = f.collection_select :category_id,Category.where(ancestry:nil),:id,:name,{include_blank:"---"},{class:"collection--category",required:"required"}
+            = f.collection_select :category_id,Category.where(parent_id:nil),:id,:name,{include_blank:"---"},{class:"collection--category",required:"required"}
           .form-container__form--category__group__collection
-            = f.collection_select :category_id,Category.find(1).children,:id,:name,{include_blank:"---"},{class:"collection--category-children",required:"required"}
+            = f.collection_select :category_id,Category.find(2).children,:id,:name,{include_blank:"---"},{class:"collection--category-children",required:"required"}
       .form-container__form--detail
         .form-container__form--detail__desc
           詳細
@@ -68,7 +68,7 @@
           .form-container__form--detail__group__collection
             = f.select :maximum_occupancy,Product.maximum_occupancies.keys.to_a,{include_blank:"---"},{required:"required",class:"collection--detail-occunpacy",}
           .form-container__form--detail__group__price
-            %span 値段　
+            %label 値段　
             =f.text_field :price,class:"text-price",placeholder:"値段を入力",require:"required",maxlength:"10"
       .form-container__form--submit
         = f.submit "登録する",class:"form--submit"

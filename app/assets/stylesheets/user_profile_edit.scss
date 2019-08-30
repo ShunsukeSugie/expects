@@ -37,6 +37,13 @@
    &--left{
      line-height:300px;
      margin-left:30px;
+     .nickname_field{
+       border-radius:$radius;
+       display:inline-block;
+       height:30px;
+       padding-left:10px;
+       letter-spacing: 2px;
+     }
    }
   }
   &__bottom{
@@ -54,7 +61,10 @@
       padding:10px;
       letter-spacing:5px;
       font-size:18px;
+      border :1px solid lightgray;
       box-sizing:border-box;
+      border-radius:$radius;
+      outline:none;
 
     }
   }
@@ -68,6 +78,8 @@
       width:400px;
       height:50px;
       margin:40px ;
+      border-radius:$radius;
+      background:$background;
       
     }
   }

@@ -3,10 +3,11 @@
   %h2
     =@category.name
   .category-links
-    -@category.children.each do |category|
-      =link_to category_path(category.id) do
-        .category-links__link
-          =category.name
+    -if @category.children.present?
+      -@category.children.each do |category|
+        =link_to category_path(category.id) do
+          .category-links__link
+            =category.name
   .category-show-wrapper-product__container
     -@products.each do |product|
       .category-show-wrapper-product__container--box

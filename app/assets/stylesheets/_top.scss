@@ -23,8 +23,9 @@ html{
     
     &__logo{
       color:white;
-      font-size:30px;
+      font-size:40px;
       font-weight:bold;
+      text-shadow: 6px 5px 2px gray;
     }
 
   }
@@ -34,16 +35,35 @@ html{
     @include clearfix;
     &__nav__scorp{
       display:flex;
+      width:100%;
+      
       .header_li{
+        font-size:20px;
         text-decoration:none;
         color:white;
         margin-left:20px;
         list-style:none;
+        
+        z-index:-1;
+        position:relative;
+      }
         a{
+          font-size:20px;
           text-decoration:none;
           color:white;
+          text-shadow: 6px 5px 2px gray;
+          display:block;
+          z-index:2;
+          margin:20px;
+          font-weight:bold;
+
+        
+
+          
+          
         }
-      }
+
+      
     }
 
     
@@ -88,6 +108,8 @@ html{
   height:100%;
   h1{
     margin:100px;
+    text-shadow: 6px 5px 2px gray;
+    letter-spacing:3px;
   }
   
   
@@ -110,6 +132,8 @@ html{
       display:flex;
       box-shadow:1px 1px 1px 1px rgba(14,14,14,0.0580392);
       margin-right:30px;
+      text-shadow: 6px 5px 2px gray;
+      
 
       &--image{
         width:40%;
@@ -123,6 +147,7 @@ html{
         height:100%;
         margin-left:15px;
         color:black;
+        letter-spacing:2px;
 
 
       }
@@ -141,6 +166,7 @@ html{
     @include box(300px,250px);
     margin-left:20px;
     overflow: hidden;
+    text-shadow: 6px 5px 2px gray;
     &--image{
       height:300px;
       width:250px;
@@ -194,7 +220,7 @@ footer{
   background:black;
   border-top-right-radius: 2000px 150px;
   border-top-left-radius: 2000px 150px;
-  padding-top:100px;
+  padding-top:50px;
   
   .footer-desc{
     height:100px;
@@ -204,6 +230,8 @@ footer{
     h2{
       color:white;
       letter-spacing: 3px;
+      text-shadow: 6px 5px 2px gray;
+      letter-spacing:2px;
     }
   }
 }

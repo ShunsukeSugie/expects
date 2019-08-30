@@ -3,6 +3,11 @@ class CategoriesController < ApplicationController
   end
   def show
     @category = Category.find(params[:id])
-    @products = Product.where(category_id:@category.subtree_ids)
+    if @category.children.present?
+    @products = Product.where(category_id:@category.children.ids)
+    else
+    @products=Product.where(category_id:@category.id)
+    
+    end
   end
 end

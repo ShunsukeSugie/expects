@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create,:edit,:destroy]
   def index
     @products = Product.all.includes(:product_images).order("created_at DESC").limit(3)
-    @categories =Category.where(ancestry:nil)
+    @categories =Category.where(parent_id:nil)
   end
   def new
     @product = Product.new
@@ -69,6 +69,7 @@ end
    end
   end
   def destroy
+    @product = Product.find(params[:id])
     @product.destroy
     redirect_to root_path
   end
