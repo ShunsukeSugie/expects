@@ -37,7 +37,7 @@ $(function(){
       var $target =$('.fc-future')
       $('fc-future').append()
         $target.click(function() {
-          
+          debugger
           var elements =$(this).data('date');
           $('td').remove('fc-event-container');
         var reserve = '<a class="fc-day-grid-event fc-h-event fc-event fc-start fc-end fc-draggable fc-resizable"><div class="fc-content"> <span class="fc-title">予約可能日</span></div><div class="fc-resizer fc-end-resizer"></div></a>';
