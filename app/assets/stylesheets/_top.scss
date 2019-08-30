@@ -109,6 +109,7 @@ html{
   h1{
     margin:100px;
     text-shadow: 6px 5px 2px gray;
+    letter-spacing:3px;
   }
   
   
@@ -132,6 +133,7 @@ html{
       box-shadow:1px 1px 1px 1px rgba(14,14,14,0.0580392);
       margin-right:30px;
       text-shadow: 6px 5px 2px gray;
+      
 
       &--image{
         width:40%;
@@ -145,6 +147,7 @@ html{
         height:100%;
         margin-left:15px;
         color:black;
+        letter-spacing:2px;
 
 
       }
@@ -228,6 +231,7 @@ footer{
       color:white;
       letter-spacing: 3px;
       text-shadow: 6px 5px 2px gray;
+      letter-spacing:2px;
     }
   }
 }
