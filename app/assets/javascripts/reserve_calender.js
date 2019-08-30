@@ -4,7 +4,7 @@ $(function(){
     $('.fc-past').css("background","lightgray");
 
     var url   = location.href;
-    if(url.match('http://localhost:3000/products/[0-9]*?/reserves/new')||url.match("expects.herokuapp.com/products/[0-9]*?$")){
+    if(url.match('http://localhost:3000/products/[0-9]*?/reserves/new')||url.match("https://expects.herokuapp.com/products/122/reserves/new")){
       $('#confirm').css("display","none");
       var reserve = '<a class="fc-day-grid-event fc-h-event fc-event fc-start fc-end fc-draggable fc-resizable"><div class="fc-content"> <span class="fc-title">予約可能日</span></div><div class="fc-resizer fc-end-resizer"></div></a>';
       console.log(gon.reserves);
