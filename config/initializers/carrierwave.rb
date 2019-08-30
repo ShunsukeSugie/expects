@@ -8,4 +8,6 @@ CarrierWave.configure do |config|
 
   config.fog_directory  = 'expects'
   config.cache_storage = :fog
+  config.root = Rails.root.join('tmp')
+  config.cache_dir = "#{Rails.root}/tmp/uploads"
 end
