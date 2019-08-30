@@ -61,8 +61,10 @@
       padding:10px;
       letter-spacing:5px;
       font-size:18px;
+      border :1px solid lightgray;
       box-sizing:border-box;
       border-radius:$radius;
+      outline:none;
 
     }
   }
