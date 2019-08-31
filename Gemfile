@@ -83,3 +83,4 @@ gem 'rename'
 gem 'kaminari'
 gem 'fog-aws'
 gem 'aws-sdk'
+
