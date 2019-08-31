@@ -1,14 +1,11 @@
 class UploadFileUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  if Rails.env.production?
-    storage :fog
-  else
-    storage :file
-  end
+
+  storage :fog
   # storage :fog
 
   # Override the directory where uploaded files will be stored.
@@ -42,12 +39,19 @@ class UploadFileUploader < CarrierWave::Uploader::Base
   # def extension_whitelist
   #   %w(jpg jpeg gif png)
   # end
-
+  config.root = Rails.root.join('tmp')
+  config.cache_dir = "#{Rails.root}/tmp/uploads"
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   # def filename
   #   "something.jpg" if original_filename
   # endif Rails.env.production?
-  
+
+  # if Rails.env.production?
+  #   storage :fog
+  # else
+  #   storage :file
+  # end
+
 
 end

@@ -81,4 +81,7 @@ gem 'momentjs-rails'
 gem 'jquery-turbolinks'
 gem 'rename'
 gem 'kaminari'
-gem 'fog'
+gem 'fog-aws'
+gem 'aws-sdk'
+gem 'mini_magick'
+
