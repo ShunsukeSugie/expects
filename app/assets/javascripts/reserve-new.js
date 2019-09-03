@@ -4,7 +4,7 @@ $(function(){
   $(document).on('turbolinks:load', function(){
     
     var url   = location.href;
-    if(url.match('http://localhost:3000/products/[0-9]*?/reserves$')||url.match('http://localhost:3000/reserves/[0-9]*?/purchases/new$')){
+    if(url.match('http://localhost:3000/products/[0-9]*?/reserves$')||url.match('http://localhost:3000/reserves/[0-9]*?/purchases/new$')||url.match('https://expects.herokuapp.com/reserves/[0-9]*?/purchases/new$')||url.match('https://expects.herokuapp.com/products/[0-9]*?/reserves$')){
       var reserve = '<a class="fc-day-grid-event fc-h-event fc-event fc-start fc-end fc-draggable fc-resizable"><div class="fc-content"> <span class="fc-title">予約可能日</span></div><div class="fc-resizer fc-end-resizer"></div></a>';
         console.log(gon.reserves);
       // var links =`<a class="link-purchase" href =${link}></a>`;
@@ -27,7 +27,6 @@ $(function(){
             gon.reserve_ids.forEach(function(value,index){
               (reserve);
               var s=value;
-              console.log(s)
                 var links =`<a data-turbolinks="false" class="link-purchase" href ="/reserves/${s}/purchases/new"></a>`;
                 // target.append(links);
               if(i+1 == index){
