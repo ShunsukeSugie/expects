@@ -29,7 +29,7 @@ $(function(){
               var s=value;
                 var links =`<a data-turbolinks="false" class="link-purchase" href ="/reserves/${s}/purchases/new"></a>`;
                 // target.append(links);
-              if(i+1 == index){
+              if(i+1 == index +1){
               target.append(links);
             }
               });
