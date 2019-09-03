@@ -82,6 +82,6 @@ gem 'jquery-turbolinks'
 gem 'rename'
 gem 'kaminari'
 gem 'fog-aws'
-gem 'aws-sdk'
+gem 'aws-sdk-s3'
 gem 'mini_magick'
 
