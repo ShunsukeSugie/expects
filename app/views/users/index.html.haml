@@ -65,7 +65,7 @@
             =purchase.reserve.product.name
             =purchase.reserve.date
             - @user.chat_members.each do |member| 
-              =link_to "連絡を取る",chat_room_messages_path(ChatRoom.find(member.chat_room.id))
+              =link_to "連絡を取る",chat_room_messages_path(ChatRoom.find_by(purchase_id:purchase.id))
               
           
       
