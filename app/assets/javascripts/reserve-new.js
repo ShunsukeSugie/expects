@@ -27,9 +27,10 @@ $(function(){
             gon.reserve_ids.forEach(function(value,index){
               (reserve);
               var s=value;
+              console.log(s)
                 var links =`<a data-turbolinks="false" class="link-purchase" href ="/reserves/${s}/purchases/new"></a>`;
                 // target.append(links);
-              if(i+1 == s){
+              if(i+1 == index){
               target.append(links);
             }
               });
