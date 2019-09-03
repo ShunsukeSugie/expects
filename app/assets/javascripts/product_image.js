@@ -3,14 +3,14 @@
           <input class="upload-image" accept="image/*" multiple="multiple" name="product_images[image][]" id="input-image" type="file"></input>`;
           var html =`<input class="upload-image" accept="image/*" multiple="multiple" name="product_images[image][]" id="input-image" type="file"><input>`;
    
-    if($('.upload-image') ==1){
-      $('.form-upload').append(html);
-      $('.form-upload').append(html);
-      $('.form-upload').append(html);
+    if($('.upload-image').length ==1){
+      $('.form-upload').append(v);
+      $('.form-upload').append(v);
+      $('.form-upload').append(v);
     
-   }else if($('.upload-image')==2){
-    $('#form-upload').append(html);
-    $('#form-upload').append(html);
+   }else if($('.upload-image').length==2){
+    $('#form-upload').append(v);
+    $('#form-upload').append(v);
     
    }else if($('.upload-image').length ==3){
     $('.form-upload').append(v);
