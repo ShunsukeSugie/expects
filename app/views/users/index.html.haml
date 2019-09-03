@@ -34,8 +34,8 @@
           .main-user-box-introduction__bottom--image
             =link_to product_path(product) do
               =image_tag("#{product.product_images[0].image}",class:"reserve-image")
-          .main-user-box-introduction__bottom--image__desc
-            =link_to"予約票",new_product_reserve_path(product.id),data: { "turbolinks"=> false}
+            .main-user-box-introduction__bottom--image__desc
+              =link_to"予約票",new_product_reserve_path(product.id),data: { "turbolinks"=> false}
         = paginate(@products)
     -else
       .main-user-box-introduction__bottom-nil
