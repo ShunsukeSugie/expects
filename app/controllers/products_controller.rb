@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create,:edit,:destroy]
+  before_action :authenticate_user!, only: [:new, :create,:edit,:destroy,:update]
   def index
     @products = Product.all.includes(:product_images).order("created_at DESC").limit(3)
     @categories =Category.where(parent_id:nil)
@@ -33,15 +33,16 @@ def edit
 end
 def update
   @product =Product.find(params[:id])
-  if@product.update(product_paramater)
-  @address =  "#{@product.address.name+ @product.address.town + @product.address.town_number}"
+  if@product.update(product_params)
+     @address =  "#{@product.address.name+ @product.address.town + @product.address.town_number}"
       if params[:product_images] != nil
             params[:product_images][:image].each do |i|
               @image = @product.product_images.update(image: i.tempfile, product_id: @product.id)
             end
-          end
+      end
+        
     @map = Map.where(product_id:@product.id)
-    Map.update(address: @address,product_id:@product.id)
+    Map.update(address: @address)
     redirect_to root_path
   end
 end
