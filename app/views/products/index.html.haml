@@ -57,40 +57,40 @@
 
   %h1.desc-wrapper__recommendations__experience 
     PICK UP 
-  .desc-wrapper__experiences
-    -@products.each do |product|
+-#   .desc-wrapper__experiences
+-#     -@products.each do |product|
 
-      .desc-wrapper__experiences__box
-        =link_to product_path(product.id),class:"link_product" do
-          =image_tag("#{product.product_images[0].image}",class: "desc-wrapper__experiences__box--image") 
-          .desc-wrapper__experiences__box__text
-            .desc-wrapper__experiences__box__text--name
-              =product.name
-            .desc-wrapper__experiences__box__text--price
-              ￥#{product.price}/人
-  %h1.desc-wrapper__recommendations__experience 
-    PICK UP 
-  .desc-wrapper__experiences
-    -@products.each do |product|
-      .desc-wrapper__experiences__box
-        =link_to product_path(product.id),class:"link_product" do
-          =image_tag("#{product.product_images[0].image}",class: "desc-wrapper__experiences__box--image") 
-          .desc-wrapper__experiences__box__text
-            .desc-wrapper__experiences__box__text--name
-              =product.name
-            .desc-wrapper__experiences__box__text--price
-              ￥#{product.price}/人
-      -# .desc-wrapper__experiences__box
-      -#   =image_tag("",class: "desc-wrapper__experiences--image")
-      -#   .desc-wrapper__experiences__box--text
-      -# .desc-wrapper__experiences__box
-      -#   =image_tag("",class: "desc-wrapper__experiences--image")
-      -#   .desc-wrapper__experiences__box--text
-      -# .desc-wrapper__experiences__box
-      -#   =image_tag("",class: "desc-wrapper__experiences--image")
-      -#   .desc-wrapper__experiences__box--text
-%footer
-  .footer-desc
-    %h2 expeience
+-#       .desc-wrapper__experiences__box
+-#         =link_to product_path(product.id),class:"link_product" do
+-#           =image_tag("#{product.product_images[0].image}",class: "desc-wrapper__experiences__box--image") 
+-#           .desc-wrapper__experiences__box__text
+-#             .desc-wrapper__experiences__box__text--name
+-#               =product.name
+-#             .desc-wrapper__experiences__box__text--price
+-#               ￥#{product.price}/人
+-#   %h1.desc-wrapper__recommendations__experience 
+-#     PICK UP 
+-#   .desc-wrapper__experiences
+-#     -@products.each do |product|
+-#       .desc-wrapper__experiences__box
+-#         =link_to product_path(product.id),class:"link_product" do
+-#           =image_tag("#{product.product_images[0].image}",class: "desc-wrapper__experiences__box--image") 
+-#           .desc-wrapper__experiences__box__text
+-#             .desc-wrapper__experiences__box__text--name
+-#               =product.name
+-#             .desc-wrapper__experiences__box__text--price
+-#               ￥#{product.price}/人
+-#       -# .desc-wrapper__experiences__box
+-#       -#   =image_tag("",class: "desc-wrapper__experiences--image")
+-#       -#   .desc-wrapper__experiences__box--text
+-#       -# .desc-wrapper__experiences__box
+-#       -#   =image_tag("",class: "desc-wrapper__experiences--image")
+-#       -#   .desc-wrapper__experiences__box--text
+-#       -# .desc-wrapper__experiences__box
+-#       -#   =image_tag("",class: "desc-wrapper__experiences--image")
+-#       -#   .desc-wrapper__experiences__box--text
+-# %footer
+-#   .footer-desc
+-#     %h2 expeience
 
 
