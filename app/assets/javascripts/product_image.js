@@ -1,18 +1,20 @@
   $(document).on('turbolinks:load', function(){
-  
+    var v =`<label class="label-desc" for="product_product_images_attributes_0_ドラッグ&amp;ドロップ">ドラッグ&amp;ドロップ</label>
+          <input class="upload-image" accept="image/*" multiple="multiple" name="product_images[image][]" id="input-image" type="file"></input>`;
+          var html =`<input class="upload-image" accept="image/*" multiple="multiple" name="product_images[image][]" id="input-image" type="file"><input>`;
    
-    if($('.upload-image').length ==1){
-      $('#form_upload').append(v);
-      $('#form_upload').append(v);
-      $('#form_upload').append(v);
+    if(gon.image.length ==1){
+      $('.form-upload').append(html);
+      $('.form-upload').append(html);
+      $('.form-upload').append(html);
     
-   }else if($('.upload-image').length ===2){
-    $('#form_upload').append(html);
-    $('#form_upload').append(html);
+   }else if(gon.image.length ===2){
+    $('#form-upload').append(html);
+    $('#form-upload').append(html);
     
    }else if($('.upload-image').length ==3){
-    $('.images-container__boxes__boxes').append(v);
-    
+    $('.form-upload').append(v);
+   
    }
   //  return
   
@@ -26,7 +28,7 @@
           var form_upload = $('#form_upload');
           var v =$(`<label class="label-desc" for="product_product_images_attributes_0_ドラッグ&amp;ドロップ">ドラッグ&amp;ドロップ</label>
           <input class="upload-image" accept="image/*" multiple="multiple" name="product_images[image][]" id="input-image" type="file"></input>`);
-          var html ='<input class="upload-image" accept="image/*" multiple="multiple" name="product_images[image][]" id="input-image" type="file"></input>';
+          var html =$('<input class="upload-image" accept="image/*" multiple="multiple" name="product_images[image][]" id="input-image" type="file"></input>');
         //   if($('.upload-image').length ==1){
         //     $('#form_upload').append(v);
         //     $('#form_upload').append(v);
@@ -39,7 +41,7 @@
         //  }else if($('.upload-image').length ==3){
         //   $('.images-container__boxes__boxes').append(v);
           
-        //  }
+        //  };
           var file = e.target.files[0],
            reader = new FileReader();
           
