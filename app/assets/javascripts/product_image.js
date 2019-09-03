@@ -3,12 +3,12 @@
           <input class="upload-image" accept="image/*" multiple="multiple" name="product_images[image][]" id="input-image" type="file"></input>`;
           var html =`<input class="upload-image" accept="image/*" multiple="multiple" name="product_images[image][]" id="input-image" type="file"><input>`;
    
-    if(gon.image.length ==1){
+    if($('.upload-image') ==1){
       $('.form-upload').append(html);
       $('.form-upload').append(html);
       $('.form-upload').append(html);
     
-   }else if(gon.image.length ===2){
+   }else if($('.upload-image')==2){
     $('#form-upload').append(html);
     $('#form-upload').append(html);
     
