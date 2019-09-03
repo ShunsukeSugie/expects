@@ -84,4 +84,5 @@ gem 'kaminari'
 gem 'fog-aws'
 gem 'aws-sdk-s3'
 gem 'mini_magick'
+gem 'font-awesome-rails'
 

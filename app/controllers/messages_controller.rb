@@ -5,6 +5,7 @@ class MessagesController < ApplicationController
     @message = Message.new
     @purchase =Purchase.find(@chat_room.purchase_id)
     @reserve =Reserve.find(@purchase.reserve_id)
+    @product =Product.find(@reserve.product_id)
     if@messages.present?
       render :create
     else
