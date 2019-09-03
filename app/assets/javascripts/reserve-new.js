@@ -4,7 +4,7 @@ $(function(){
   $(document).on('turbolinks:load', function(){
     
     var url   = location.href;
-    if(url.match('http://localhost:3000/products/[0-9]*?/reserves$')||url.match('http://localhost:3000/reserves/[0-9]*?/purchases/new$')||url.match("https://expects.herokuapp.com/products/[0-9]*?/reserves")||url.match('https://expects.herokuapp.com/reserves/[0-9]*?/purchases/new$')){
+    if(url.match('http://localhost:3000/products/[0-9]*?/reserves$')||url.match('http://localhost:3000/reserves/[0-9]*?/purchases/new$')){
       var reserve = '<a class="fc-day-grid-event fc-h-event fc-event fc-start fc-end fc-draggable fc-resizable"><div class="fc-content"> <span class="fc-title">予約可能日</span></div><div class="fc-resizer fc-end-resizer"></div></a>';
         console.log(gon.reserves);
       // var links =`<a class="link-purchase" href =${link}></a>`;
@@ -40,9 +40,9 @@ $(function(){
           $('.style2').removeClass('fc-future');
      var target = $('#calender').find('.fc-future')
     $('.fc-future').click(function() {
-      // var elements =$(this).data('date');
+      var elements =$(this).data('date');
     if($(this).find('a').hasClass('fc-event')){
-        // $('.date-field').val(elements);
+        $('.date-field').val(elements);
     if($('.purchase-new__date p').hasClass('date-data')){
       $('.date-data').text(elements);
     }else{
