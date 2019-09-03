@@ -27,7 +27,7 @@ end
 def edit
 
   @product = Product.find(params[:id])
-  @product_image =@product.product_images[0].image
+  @product_image =@product.product_images[0]
   gon.image =@product_image
   
 end
