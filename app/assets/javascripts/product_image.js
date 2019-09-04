@@ -1,7 +1,8 @@
   $(document).on('turbolinks:load', function(){
     var v =`<label class="label-desc" for="product_product_images_attributes_0_ドラッグ&amp;ドロップ">ドラッグ&amp;ドロップ</label>
-          <input class="upload-image" accept="image/*" multiple="multiple" name="product_images[image][]" id="input-image" type="file"></input>`;
-          var html =`<input class="upload-image" accept="image/*" multiple="multiple" name="product_images[image][]" id="input-image" type="file"><input>`;
+          <input class="upload-image" accept="image/*" multiple="multiple" name="product_images[image][]" id="input-image" type="file">`;
+          var html =`<input class="upload-image" accept="image/*" multiple="multiple" name="product_images[image][]" id="input-image" type="file">`;
+                     
    
     if($('.upload-image').length ==1){
       $('.form-upload').append(v);

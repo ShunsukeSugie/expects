@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   root 'products#index'
   resources :products do
     get 'select_category' , to: 'products#select_category', on: :collection
-    resources :reserves, only:[:new, :create,:edit,:update,:index]
+    resources :reserves, only:[:new, :create,:edit,:update,:index,:destroy]
   end
-  resources :reserves , only:[:new, :create,:edit,:update] do
+  resources :reserves , only:[:new, :create,:edit,:update,:destroy] do
     resources :purchases,only:[:new,:create,:show,:destroy] do
       collection do
         post 'pay', to: 'purchases#pay'

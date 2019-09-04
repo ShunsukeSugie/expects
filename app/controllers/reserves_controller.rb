@@ -1,5 +1,6 @@
 class ReservesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_product, only: [:edit]
   def index
     @product = Product.find(params[:product_id])
    
@@ -57,27 +58,35 @@ end
   end
   def create
    
-     
-  
-    reserve_params.each do |reserve|
-      @confirm = Reserve.where(product_id:params[:product_id]).find_by(date: reserve)
       
+  if params[:reserves]!= nil
+    reserve_params.each do |reserve|
+     
+      @confirm = Reserve.where(product_id:params[:product_id]).find_by(date: reserve)
       unless @confirm.present?
-        Reserve.create(date:reserve,status:1,product_id: params[:product_id])
+        @reserve =Reserve.create(date:reserve,status:1,product_id: params[:product_id])
+        
       else
         @confirm.update(date:reserve,status:1,product_id: params[:product_id])
       end
+      Reserve.where(product_id:params[:product_id]).where.not(date:reserve_params).destroy_all
     end
-    
+  else
+    Reserve.where(product_id:params[:product_id]).destroy_all
+  end
   
-    redirect_to users_path
+  redirect_to users_path
+
   end
   private
     def reserve_params
       params[:reserves][:date].each do |date|
        params.require(:reserve).permit(:date).merge(product_id:params[:product_id])
-    
       end
+    end
+    def set_product
+     
+      @product=Product.find(params[:product_id])
     end
 end
 
