@@ -87,7 +87,7 @@ $(function(){
               
               var ele =$('.date-field').last().val();
               var tag= $('.fc-future').filter(`[data-date =${elements}]`);
-                 tag.find('.fc-event').remove();;
+                 tag.find('.fc-event').remove();
               $('.date-field').filter(`[value =${elements}]`).remove();
               $('.date-data').remove();
               $('#calendar').css("opacity","1");

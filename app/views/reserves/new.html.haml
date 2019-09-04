@@ -10,7 +10,7 @@
             -@reserves.each do |reserve|
               =f.hidden_field :date,multiple: true,name: "reserves[date][]",class:"date-field",required:"required",value:"#{reserve.date}"
       .purchase-new__member-label
-        =f.hidden_field :status,value:1
+        =f.hidden_field :status,value:2
       -#   = f.label "参加人数"
       -# .purchase-new__join-member
       -#   -# =f.text_field :member,{class: "member-field",required: "required"}
@@ -40,7 +40,7 @@
       
       %a.js-modal-close-btn{:href => ""} 
       .button-wrapper
-        %p.left2 登録する
+        %p.left2 削除する
         %p.right2 戻る
   
       
