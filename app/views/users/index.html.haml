@@ -53,18 +53,15 @@
             =purchase.reserve.date
             - @user.chat_members.each do |member| 
               =link_to "連絡を取る",chat_room_messages_path(ChatRoom.find(member.chat_room.id))
+            =link_to "予約取り消す", reserve_purchase_path(purchase.reserve.id,purchase.id),method:'delete'
   .main-user-box-introduction
     .main-user-box-introduction__bottom
       %h2 予約者一覧
-    -if@purchases.present?
-      - @user.purchases.each do |purchase| 
+    -if@products_host.present?
+      -@products_host.each do |host|
         .main-user-box-introduction__bottom__reserve-introduction
-          =link_to product_path(purchase.reserve.product_id) do
-            =image_tag("#{purchase.reserve.product.product_images[0].image}",class:"reserve-image")
+          =link_to product_path(host.id) do
+            =image_tag("#{host.product_images[0].image}",class:"reserve-image")
           .main-user-box-introduction__bottom__reserve-introduction--desc
-            =purchase.reserve.product.name
-            =purchase.reserve.date
-            =link_to "連絡を取る",chat_room_messages_path(ChatRoom.find_by(purchase_id:purchase.id))
-              
-          
-      
+            =host.name
+            =link_to "連絡を取る",chat_room_messages_path(ChatRoom.find(ChatMember.where(user_id:host.user_id).ids))

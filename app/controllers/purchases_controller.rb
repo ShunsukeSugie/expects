@@ -67,10 +67,17 @@ class PurchasesController < ApplicationController
     ChatRoom.create(purchase_id:@purchase.id)
     @chat_room =ChatRoom.last
     @user =current_user
-    ChatMember.create(user_id:@product.id,chat_room_id:@chat_room.id)
+    ChatMember.create(user_id:@product.user_id,chat_room_id:@chat_room.id)
     ChatMember.create(user_id:@user.id,chat_room_id:@chat_room.id)
     @reserve.update(status:2)
     redirect_to root_path
+  end
+  def destroy 
+    @purchase =Purchase.find(params[:id])
+    @purchase.destroy
+    @reserve =Reserve.find(@purchase.reserve_id)
+    @reserve.update(status:1)
+    redirect_to users_path
   end
   private
   def purchase_params
