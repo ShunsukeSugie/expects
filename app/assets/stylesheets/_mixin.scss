@@ -54,3 +54,11 @@
     display: #{$prefix}flex;
   }
 }
+@mixin error{
+  text-align:center;
+  width:100%;
+  color:white;
+  background:gray;
+  font-size:20px;
+  box-shadow:1px 1px 1px 1px rgba(14,14,14,0.0580392);
+}

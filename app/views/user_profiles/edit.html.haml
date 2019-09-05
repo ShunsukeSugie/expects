@@ -5,9 +5,9 @@
     =form_with model: current_user,url: user_profile_path(current_user), method: "PATCH",local:true do |f|
       .user-edit__box__top
         .user-edit__box__top--right
-          -if @user_profile.avatar == nil
-            =f.label "イメージ画像"
-            =f.file_field :avatar,accept:"image/*", class:"avatar_field",value:"#{@user_profile.avatar}"
+          -unless @user_profile.avatar.present?
+            =f.label "avatar登録"
+            =f.file_field :avatar,accept:"image/*", class:"avatar_field"
           -else 
             =f.file_field :avatar,accept:"image/*",class:"avatar_field",value:"#{@user_profile.avatar}"
             .avatar_box
