@@ -1,0 +1,36 @@
+.login-wrapper{
+  height:500px;
+  width:500px;
+  margin:100px auto;
+  text-align:center;
+  
+  h2{
+    font-size:40px;
+    margin:50px;
+    letter-spacing: 4px;
+  }
+  .field{
+    margin:20px 0;
+    label{
+      margin:20px;
+      display:inline-block;
+    }
+    input{
+      height:30px;
+      font-size:18px;
+      padding:5px;
+      border-radius:$radius;
+    }
+     
+    
+  }
+  .login-button{
+   background:$button-color;
+   color:white;
+   width:70px;
+   padding:5px;
+   border-radius:$radius;
+  }
+  
+
+}

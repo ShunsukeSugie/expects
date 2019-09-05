@@ -36,24 +36,35 @@
     .desc-wrapper__prefectures__box
       -if Address.where(Prefecture_id: 13).first.present?
         =link_to address_path(Address.where(Prefecture_id: 13).first.id) do
-
-          =image_tag("japan-4141578_1280.jpg",class: "desc-wrapper__prefectures__box--image")
+          =image_tag("japan-4141578_1280.jpg",class: "desc-wrapper__prefectures__box--image") 
+          %p　東京
       -else
         =image_tag("japan-4141578_1280.jpg",class: "desc-wrapper__prefectures__box--image")
+        %p　東京
+    .desc-wrapper__prefectures__box
+      -if Address.where(Prefecture_id: 27).first.present?
+        =link_to address_path(Address.where(Prefecture_id: 27).first.id) do
+          =image_tag("japan-1432858_1280.jpg",class: "desc-wrapper__prefectures__box--image")
+          %p　京都
+      -else
+        =image_tag("japan-1432858_1280.jpg",class: "desc-wrapper__prefectures__box--image")
+        %p　京都
+    .desc-wrapper__prefectures__box
+      -if Address.where(Prefecture_id: 26).first.present?
+        =link_to address_path(Address.where(Prefecture_id: 26).first.id) do
+          =image_tag("japan-3664500_1280.jpg",class: "desc-wrapper__prefectures__box--image")
+          %p　大阪
+      -else
+        =image_tag("japan-3664500_1280.jpg",class: "desc-wrapper__prefectures__box--image")
+        %p　大阪
     .desc-wrapper__prefectures__box
       -if Address.where(Prefecture_id: 47).first.present?
         =link_to address_path(Address.where(Prefecture_id: 47).first.id) do
-          =image_tag("japan-1432858_1280.jpg",class: "desc-wrapper__prefectures__box--image")
+          =image_tag("umi.jpg",class: "desc-wrapper__prefectures__box--image")
+          %p　沖縄
       -else
-        =image_tag("japan-1432858_1280.jpg",class: "desc-wrapper__prefectures__box--image")
-    .desc-wrapper__prefectures__box
-      -if Address.where(Prefecture_id: 14).first.present?
-        =link_to address_path(Address.where(Prefecture_id: 14).first.id) do
-          =image_tag("japan-3664500_1280.jpg",class: "desc-wrapper__prefectures__box--image")
-      -else
-        =image_tag("japan-3664500_1280.jpg",class: "desc-wrapper__prefectures__box--image")
-    .desc-wrapper__prefectures__box
-      =image_tag("umi.jpg",class: "desc-wrapper__prefectures__box--image")
+        =image_tag("umi.jpg",class: "desc-wrapper__prefectures__box--image")
+        %p　沖縄
 
   %h1.desc-wrapper__recommendations__experience 
     PICK UP 
