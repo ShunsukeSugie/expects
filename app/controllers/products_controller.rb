@@ -33,12 +33,21 @@ def edit
 end
 def update
   @product =Product.find(params[:id])
+  @product_images =ProductImage.where(product_id: @product.id)
   if@product.update(product_params)
      @address =  "#{@product.address.name+ @product.address.town + @product.address.town_number}"
       if params[:product_images] != nil
-            params[:product_images][:image].each do |i|
-              @image = @product.product_images.update(image: i.tempfile, product_id: @product.id)
-            end
+        ProductImage.where(product_id:@product.id).destroy_all
+            params[:product_images][:image].each_with_index do |i,index|
+               
+             
+              @confirm =ProductImage.find_or_initialize_by(product_id:@product.id)
+              
+                
+                  
+                    ProductImage.create(image: i.tempfile, product_id: @product.id)
+            
+        end
       end
         
     @map = Map.where(product_id:@product.id)
