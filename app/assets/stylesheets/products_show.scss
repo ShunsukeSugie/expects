@@ -4,6 +4,9 @@
 //   @extend html;
 //   margin:0;
 // }
+.error{
+  @include error;
+}
 .product-wrapper{
   width:100%;
   height:100%;
