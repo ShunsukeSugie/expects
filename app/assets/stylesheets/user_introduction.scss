@@ -134,6 +134,7 @@
     line-height:40px;
     a{
       width:10%;
+      color:$button-color;
     }
     .reserve-image{
       @include image(30px, 30px);
