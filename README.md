@@ -1,24 +1,24 @@
-# README
+# experience
+ 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ 
+## 説明
+ -昨今フリーランスなど個人で仕事をされる人が増えてきたり、副業として個人で仕事を受けることも増えてきているので個人間で、サービスを提供できるプロダクトを作りたいと思いこのサイトを作りました。
+ 自分の提供できるサービスを個人間でやりとりできるサイト,experienceです。
+ 具体的ににはツアー、体験教室など個人で自分の持っている技術、知識などを隙間時間で提供できる。サービスです。
+ 個人でサービスを立ち上げられ、オリジナリティーのあるサービスを提供できるサイトです。
 
-Things you may want to cover:
+## 接続先情報
+URL https://expects.herokuapp.com
 
-* Ruby version
+-購入用カード情報
+--番号：4242424242424242
+--期限：今の日付を過ぎていなければ
 
-* System dependencies
+##開発環境
+-ruby/Ruby on Rails/MySQL/Github/heroku
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 工夫した点
+-カレンダー機能を使った予約システムを作りより簡単に予約管理、予約が取れるようにした。
+　jqueryを用いて出品側では予約可能日をクリックすることで、予約可能日のタグをつけもう一度クッリクすれば簡単に
+　取り外せるようにし、購入者側ではその予約タグが出ている　日にちしか予約ができないようにし、予約された日は購入停止　にするようにした。それによりスムーズにより簡単に予約、予約管理ができるようにしった。
