@@ -12,6 +12,9 @@ class ProductsController < ApplicationController
   end
   def create
     @product =Product.new(product_params)
+    if params[:product_images].blank?
+      redirect_to new_product_path,flash: {error:'イメージ画像を登録してください' }
+    end
     @product.save
       if @product.save
         @address =  "#{@product.address.name+ @product.address.town + @product.address.town_number}"
@@ -22,6 +25,8 @@ class ProductsController < ApplicationController
         Map.create(address: @address,product_id:@product.id)
         # Reserve.create(product_id: @product.id,user_id: current_user.id,status:1)
         redirect_to new_product_reserve_path(@product)
+      else
+        redirect_to new_product_path,flash: {error:'登録できませんでした' }
   end
 end
 def edit
