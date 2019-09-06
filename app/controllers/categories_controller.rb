@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.find(params[:id])
     if @category.children.present?
-    @products = Product.where(category_id:@category.children.ids)
+    @products = Product.where(category_id:@category.children.ids).includes(:product_images)
     else
     @products=Product.where(category_id:@category.id)
     

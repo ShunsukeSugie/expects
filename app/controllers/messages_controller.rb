@@ -2,6 +2,7 @@ class MessagesController < ApplicationController
   before_action :set_group
   def index
     @chat_room =ChatRoom.find(params[:chat_room_id])
+    @chat_members = @chat_room.chat_members.includes(:user)
     @message = Message.new
     @purchase =Purchase.find(@chat_room.purchase_id)
     @reserve =Reserve.find(@purchase.reserve_id)
