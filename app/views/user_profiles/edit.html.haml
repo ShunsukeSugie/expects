@@ -40,6 +40,6 @@
       %h1 電話番号
       =form_with model: current_user,url: user_profile_path(current_user), method: "PATCH",local:true,class:"form-phone" do |f|
         .user-edit__box__wrapper-phone__form
-          =f.text_field :tel,class:"text--phone"
+          =f.text_field :tel,class:"text--phone",value:"#{@user_profile.tel}"
         .user-edit__box__bottom__submit
           =f.submit "編集する",class:"submit_user_edit"

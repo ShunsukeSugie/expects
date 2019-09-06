@@ -1,0 +1,16 @@
+=render "header"
+.search-wrapper
+  -if @products.present?
+    %p #{@search.conditions.first.values.first.value}の結果
+    .category-show-wrapper-product__container
+      -@products.each do |product|
+        .category-show-wrapper-product__container--box
+          =link_to product_path(product.id),class:"category-link-product" do
+            =image_tag("#{product.product_images[0].image}",class:"category-show-wrapper-product__container--box-image")
+            .category-show-wrapper-product__container--box__text
+              .category-show-wrapper-product__container--box__text--name
+                =product.name
+              .category-show-wrapper-product__container--box__text--price
+                ¥ #{product.price}
+  -else
+    %p 該当する商品が見つかりません。検索条件を変えて、再度お試しください。

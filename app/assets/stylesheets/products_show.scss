@@ -75,10 +75,15 @@
     
   }
   .desc-wrapper{
+    @include clearfix;
     height:auto;
-    width:50%;
-    text-align:right;
-    font-size:20px;
+    width:100%;
+    word-wrap: break-word;
+    padding-left:500px;
+    box-sizing:border-box;
+    line-height:2;
+    font-size:22px;
+    float:right;
     letter-spacing:8px;
   }
   .sub-image__container{
@@ -111,7 +116,9 @@
       &--user-name{
         width:200px;
         text-align:center;
+        text-shadow:$text-shadow;
         font-size:20px;
+        letter-spacing:2px;
         margin-top:10px;
       }
      
@@ -132,6 +139,8 @@
      padding:50px;
      word-wrap: break-word;
      font-size:20px;
+     line-height:2;
+     font-size:22px;
      color:$word;
      letter-spacing: 10px;
      

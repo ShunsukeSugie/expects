@@ -6,6 +6,7 @@ Rails.application.routes.draw do
         get '/users/sign_out' => 'devise/sessions#destroy'
   end
   root 'products#index'
+  get 'search',to:'products#search'
   resources :products do
     get 'select_category' , to: 'products#select_category', on: :collection
     resources :reserves, only:[:new, :create,:edit,:update,:index,:destroy]

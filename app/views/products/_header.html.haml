@@ -1,6 +1,12 @@
 .header
   .left-wrapper
     .left-wrapper__logo experience
+  .center-wrapper
+    = search_form_for(@search,url: search_path ,class: "center-wrapper__search") do |f|
+      = f.search_field :name_or_category_name_or_map_address_cont_any,class: "center-wrapper__search__form", placeholder: "キーワードから探す"
+      = f.submit '探す',class: "center-wrapper__search__button"
+      -# = button_tag type:"submit", class: "center-wrapper__search__button" do 
+      -#   = fa_icon "search"
   .right-wrapper
     -if user_signed_in?
       %nav.right-wrapper__nav
@@ -8,7 +14,7 @@
           
           =link_to "top",root_path
           
-          =link_to "体験","/"
+          -# =link_to "体験","/"
           
           =link_to "mypage",users_path
           

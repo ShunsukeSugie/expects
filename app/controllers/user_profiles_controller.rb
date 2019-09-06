@@ -3,8 +3,8 @@ class UserProfilesController < ApplicationController
   def new
   end
   def edit
-    id =current_user.user_profile.id
-    @user_profile = UserProfile.find(id)
+    @user_profile =current_user.user_profile
+   
   end
   def update
     
