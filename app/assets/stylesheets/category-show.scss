@@ -66,4 +66,18 @@
     }
     }
   }
+  .search-wrapper{
+    background:$background;
+    padding:100px ;
+    
+    height:100vh;
+
+    p{
+      margin:100px 0;
+      font-size:30px;
+      letter-spacing:7px;
+      text-shadow:$text-shadow;
+
+    }
+  }
 
