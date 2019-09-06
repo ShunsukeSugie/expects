@@ -1,3 +1,9 @@
+-if flash[:error]
+  %p.error
+    = flash[:error]
+.new-header
+  .newheader__logo
+    = link_to "experiene",root_path,class:"header_logo"
 .purchase-new__wrapper
   #calendar
   .form-data__wrapper
@@ -6,7 +12,7 @@
         =f.label "予約日"
       .purchase-new__date
         %p
-          -# =f.hidden_field :date,class:"date-field",required:"required"
+          =@reserve.date
       .purchase-new__member-label
         = f.label "参加人数"
       .purchase-new__join-member

@@ -18,7 +18,13 @@ $(function(){
               const i =index
               var target= $('.fc-future').filter(`[data-date =${v}]`);
               var e =   target.append(reserve);
-             console.log(gon.status); 
+              console.log(gon.counts);
+              gon.counts.forEach(function(value,index){
+                if(index==i){
+              
+                  e.find('.fc-title').text(`あと${value}人`)
+                }
+              })
               gon.status.forEach(function(value,index){
                   if(index ==i){
                   target.addClass('style' + value);

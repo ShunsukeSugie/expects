@@ -1,6 +1,6 @@
 class ReservesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_product, only: [:edit]
+  before_action :set_product, only: [:edit,:create,:reserve_params]
   def index
     @product = Product.find(params[:product_id])
    
@@ -27,6 +27,12 @@ class ReservesController < ApplicationController
      statuses<<@status
   end
   gon.status = statuses
+  counts =[]
+  @reserves.each do |reserve|
+    @count =reserve.count
+    counts<<@count
+  end
+  gon.counts =counts
 else
   flash.now[:error] = 'ただいま受付できません'
   redirect_to product_path(@product.id),flash: {error:'ただいま受付できません' }
@@ -64,7 +70,7 @@ end
      
       @confirm = Reserve.where(product_id:params[:product_id]).find_by(date: reserve)
       unless @confirm.present?
-        @reserve =Reserve.create(date:reserve,status:1,product_id: params[:product_id])
+        @reserve =Reserve.create(date:reserve,status:1,product_id: params[:product_id],count:@product.maximum_occupancy)
         
       else
         @confirm.update(date:reserve,status:1,product_id: params[:product_id])
