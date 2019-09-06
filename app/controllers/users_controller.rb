@@ -11,8 +11,8 @@ class UsersController < ApplicationController
         end
     end
     @products = Product.where(user_id: @user.id).includes(:product_images).page(params[:page]).per(6)
-    @purchases =@user.purchases
-    @chat_member =@user.chat_members
+    @purchases =@user.purchases.includes(:reserve)
+    @chat_member =@user.chat_members.includes(:user)
     # chat_room
     # @chat_rooms =@user.chat_member
     

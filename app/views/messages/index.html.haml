@@ -8,8 +8,8 @@
         %ul.left-header__members
           Member：
           %li.member
-          -if @chat_room.chat_members.present?
-            - @chat_room.chat_members.each do |member|
+          -if @chat_members.present?
+            - @chat_members.each do |member|
               = member.user.nickname
 
             

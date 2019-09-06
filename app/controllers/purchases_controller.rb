@@ -53,7 +53,8 @@ class PurchasesController < ApplicationController
     @customer = @product.user
   end
   def destroy
-    @purchase= Purchase.last
+    @purchase= Purchase.find(params[:id])
+    @reserve = Reserve.find(@purchase.reserve_id)
     redirect_to reserve_purchases_path
   end
   def confirm
@@ -78,7 +79,9 @@ class PurchasesController < ApplicationController
     @user =current_user
     ChatMember.create(user_id:@product.user_id,chat_room_id:@chat_room.id)
     ChatMember.create(user_id:@user.id,chat_room_id:@chat_room.id)
+    if @reserve.count>= @purchase.member
     @reserve.update(count:@reserve.count - @purchase.member)
+    end
     if @reserve.count == 0
      @reserve.update(status:2,count:@reserve.count - @purchase.member)
     
