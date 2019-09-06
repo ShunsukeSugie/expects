@@ -64,4 +64,4 @@
             =image_tag("#{host.product_images[0].image}",class:"reserve-image")
           .main-user-box-introduction__bottom__reserve-introduction--desc
             =host.name
-            =link_to "連絡を取る",chat_room_messages_path(ChatRoom.find(ChatMember.where(user_id:host.user_id).ids))
+            =link_to "連絡を取る",chat_room_messages_path(ChatRoom.find(ChatMember.find_by(user_id:host.user_id).chat_room_id))

@@ -1,7 +1,7 @@
 class PurchasesController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :set_product, only: [:new, :pay]
+  before_action :set_product, only: [:new,:create, :pay]
  
 
   def new
@@ -31,11 +31,20 @@ class PurchasesController < ApplicationController
       statuses<<@status
     end
     gon.status = statuses
+    counts =[]
+    @reserves.each do |reserve|
+      @count =reserve.count
+      counts<<@count
+    end
+    gon.counts =counts
   end
   def create
-    @purchase =Purchase.create(purchase_params)
-    redirect_to pay_reserve_purchases_path
-
+    if @reserve.count.to_s >= params[:purchase][:member]
+      @purchase =Purchase.create(purchase_params)
+      redirect_to pay_reserve_purchases_path
+    else
+      redirect_to new_reserve_purchase_path,flash: {error:'人数上限を超えました' }
+    end
   end
   def show
     @purchase=Purchase.last
@@ -69,7 +78,11 @@ class PurchasesController < ApplicationController
     @user =current_user
     ChatMember.create(user_id:@product.user_id,chat_room_id:@chat_room.id)
     ChatMember.create(user_id:@user.id,chat_room_id:@chat_room.id)
-    @reserve.update(status:2)
+    @reserve.update(count:@reserve.count - @purchase.member)
+    if @reserve.count == 0
+     @reserve.update(status:2,count:@reserve.count - @purchase.member)
+    
+    end
     redirect_to root_path
   end
   def destroy 
