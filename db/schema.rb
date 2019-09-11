@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_06_191934) do
+ActiveRecord::Schema.define(version: 2019_09_11_213453) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "prefecture_id", null: false
@@ -114,6 +114,17 @@ ActiveRecord::Schema.define(version: 2019_09_06_191934) do
     t.index ["product_id"], name: "index_reserves_on_product_id"
   end
 
+  create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "review", null: false
+    t.integer "grade", null: false
+    t.bigint "purchase_id"
+    t.bigint "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_reviews_on_product_id"
+    t.index ["purchase_id"], name: "index_reviews_on_purchase_id"
+  end
+
   create_table "user_profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "last_name", null: false
     t.string "first_name", null: false
@@ -155,5 +166,7 @@ ActiveRecord::Schema.define(version: 2019_09_06_191934) do
   add_foreign_key "purchases", "reserves"
   add_foreign_key "purchases", "users"
   add_foreign_key "reserves", "products"
+  add_foreign_key "reviews", "products"
+  add_foreign_key "reviews", "purchases"
   add_foreign_key "user_profiles", "users"
 end

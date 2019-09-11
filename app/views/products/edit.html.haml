@@ -67,7 +67,7 @@
             =f.label "人数",class:"label--detail-occunpacy"
         
           .form-container__form--detail__group__collection
-            = f.select :maximum_occupancy,Product.maximum_occupancies.keys.to_a,{include_blank:"---"},{required:"required",class:"collection--detail-occunpacy",}
+            = f.text_field :maximum_occupancy,{required:"required",class:"collection--detail-occunpacy",}
           .form-container__form--detail__group__price
             %span 値段　
             =f.text_field :price,class:"text-price",placeholder:"値段を入力",require:"required",maxlength:"10"
