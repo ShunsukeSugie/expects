@@ -2,17 +2,25 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   def index
     @user = current_user
-    if Reserve.where(status:2).present?
+    # if Reserve.where(status:2).present?
+    
+    @products=Product.where(user_id: current_user.id)
+    if@products.present?
       @reviews =[]
+      @products=Product.where(user_id: current_user.id)
       @products_host=[]
-      @purchased =Reserve.where(status:2)
+      @purchased =Reserve.where(product_id: @products.ids)
         @purchased.each do |purchase|
+          @purchase =Purchase.where(reserve_id:purchase.id)
           @product_host=Product.find(purchase.product_id)
-          @review =Review.where(product_id:@product_host.id)
+          
           @products_host<<@product_host
+          @reviews<<@review
+         
         end
-        
-    end
+        @review =Review.where(product_id:@products.ids)
+      end
+  
     @products = Product.where(user_id: @user.id).includes(:product_images).page(params[:page]).per(6)
     @purchases =@user.purchases.includes(:reserve)
     @chat_member =@user.chat_members.includes(:user)
