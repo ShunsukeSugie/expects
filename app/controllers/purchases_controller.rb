@@ -41,6 +41,7 @@ class PurchasesController < ApplicationController
   def create
     if @reserve.count.to_s >= params[:purchase][:member]
       @purchase =Purchase.create(purchase_params)
+      
       redirect_to pay_reserve_purchases_path
     else
       redirect_to new_reserve_purchase_path,flash: {error:'人数上限を超えました' }

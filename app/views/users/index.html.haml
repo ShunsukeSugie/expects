@@ -74,14 +74,14 @@
           .main-user-box-introduction__bottom__reserve-introduction--desc
             =host.name
             =link_to "連絡を取る",chat_room_messages_path(ChatRoom.find(ChatMember.find_by(user_id:host.user_id).chat_room_id))
-  .main-user-box-introduction
-    .main-user-box-introduction__bottom
-      %h2 レビュー一覧
-    -unless @review==[nil]
-      -@review.each do |review|
-        .main-user-box-introduction__bottom__reserve-introduction
-          =link_to product_path(review.product.id) do
-            =image_tag("#{review.product.product_images[0].image}",class:"reserve-image")
-          .main-user-box-introduction__bottom__reserve-introduction--desc
-            =review.purchase.user.nickname
-          -#   =link_to "連絡を取る",chat_room_messages_path(ChatRoom.find(ChatMember.find_by(user_id:host.user_id).chat_room_id))
+  -# .main-user-box-introduction
+  -#   .main-user-box-introduction__bottom
+  -#     %h2 レビュー一覧
+  -#   -unless @review==[nil]
+  -#     -@review.each do |review|
+  -#       .main-user-box-introduction__bottom__reserve-introduction
+  -#         =link_to product_path(review.product.id) do
+  -#           =image_tag("#{review.product.product_images[0].image}",class:"reserve-image")
+  -#         .main-user-box-introduction__bottom__reserve-introduction--desc
+  -#           =review.purchase.user.nickname
+  -#         -#   =link_to "連絡を取る",chat_room_messages_path(ChatRoom.find(ChatMember.find_by(user_id:host.user_id).chat_room_id))
