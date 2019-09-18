@@ -170,6 +170,7 @@ $(function(){
   });
       $(document).on('click', 'button', function(){
         $('#confirm').css("display","none");
+        
         var reserve = '<a class="fc-day-grid-event fc-h-event fc-event fc-start fc-end fc-draggable fc-resizable"><div class="fc-content"> <span class="fc-title">予約可能日</span></div><div class="fc-resizer fc-end-resizer"></div></a>';
         $('.fc-past').css("background","lightgray");
         var target_date =$('.purchase-new__date p').children('#target_date').val();

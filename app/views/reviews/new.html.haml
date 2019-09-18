@@ -1,0 +1,19 @@
+.review-wrapper
+  .review-wrapper__box
+    .review-wrapper__box__desc
+      .review-wrapper__box__desc--left
+        =image_tag("#{@product.product_images[0].image}",class:"review-image")
+      .review-wrapper__box__desc--right
+        %p.review-wrapper__box__desc--right--host
+          ホストは#{@product.user.nickname}さん
+        %p.review-wrapper__box__desc--right--title
+          #{@product.name}
+        %p.review-wrapper__box__desc--right--date
+          #{@purchase.reserve.date} 
+
+    =form_with model: @review,url:purchase_reviews_path,method:"POST",local:true,class:"review-wrapper__box__form" do |f|
+      =f.label "評価",class:"review-wrapper__box__form--label-grade"
+      =f.select :grade,Review.grades.keys.to_a,{include_blank:"---"},{required:"required",class:"review-wrapper__box__form--select-grade"}
+      =f.text_area :review,class:"review-wrapper__box__form--review"
+      .review-wrapper__box__form--submit
+        =f.submit "登録する",class:"submit-button"

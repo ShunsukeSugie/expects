@@ -3,16 +3,22 @@ class UsersController < ApplicationController
   def index
     @user = current_user
     if Reserve.where(status:2).present?
+      @reviews =[]
       @products_host=[]
       @purchased =Reserve.where(status:2)
         @purchased.each do |purchase|
           @product_host=Product.find(purchase.product_id)
+          @review =Review.where(product_id:@product_host.id)
           @products_host<<@product_host
+         
+         
         end
+        
     end
     @products = Product.where(user_id: @user.id).includes(:product_images).page(params[:page]).per(6)
-    @purchases =@user.purchases.includes(:reserve)
+    @purchases =@user.purchases.includes(:reserve,:review)
     @chat_member =@user.chat_members.includes(:user)
+    
     # chat_room
     # @chat_rooms =@user.chat_member
     

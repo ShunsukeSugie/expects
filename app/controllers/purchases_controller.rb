@@ -89,7 +89,7 @@ class PurchasesController < ApplicationController
     redirect_to root_path
   end
   def destroy 
-    @purchase =Purchase.find(params[:id])
+    @purchase =Purchase.last
     @purchase.destroy
     @reserve =Reserve.find(@purchase.reserve_id)
     @reserve.update(status:1)

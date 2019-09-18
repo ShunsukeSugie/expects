@@ -15,9 +15,11 @@ Rails.application.routes.draw do
     resources :purchases,only:[:new,:create,:show,:destroy] do
       collection do
         post 'pay', to: 'purchases#pay'
-        
       end 
     end
+  end
+  resources :purchase,only:[:new,:create,:show,:destroy] do
+    resources :reviews,only:[:new,:create]
   end
   resources :chat_rooms, only: [:index,:new,:show ,:create] do
     resources :messages, only: [:index, :create]
