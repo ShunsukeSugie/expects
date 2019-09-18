@@ -10,13 +10,11 @@ class UsersController < ApplicationController
           @product_host=Product.find(purchase.product_id)
           @review =Review.where(product_id:@product_host.id)
           @products_host<<@product_host
-         
-         
         end
         
     end
     @products = Product.where(user_id: @user.id).includes(:product_images).page(params[:page]).per(6)
-    @purchases =@user.purchases.includes(:reserve,:review)
+    @purchases =@user.purchases.includes(:reserve)
     @chat_member =@user.chat_members.includes(:user)
     
     # chat_room
