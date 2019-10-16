@@ -30,24 +30,36 @@
 .form-data__wrapper{
   width:30%;
   height:100%;
-  padding:150px 50px;
+  padding:150px 100px;
+  p{
+    word-wrap:break-word;
+    letter-spacing:3px;
+    font-size:30px;
+    line-height:40px;
+  }
   .form-purchase-new{
     height:100%;
     width:100%;
     .purchase-new__date-label{
       font-size:20px;
+      letter-spacing:3px;
+      font-weight:bold;
     }
     .purchase-new__date{
       font-size:23px;
       margin:20px 20px;
+      letter-spacing:2px;
       .date-field{
        padding:5px 20px;
+       letter-spacing:2px;
        
       }
     }
     .purchase-new__member-label{
       margin-top:50px;
       font-size:20px;
+      letter-spacing:3px;
+      font-weight:bold;
     }
     .purchase-new__join-member{
       @extend .purchase-new__date;

@@ -62,11 +62,11 @@
             -else
               .main-user-box-introduction__bottom__reserve-introduction--desc
                 =link_to "レビューする",new_purchase_review_path(purchase.id)
-            
+
   .main-user-box-introduction
     .main-user-box-introduction__bottom
       %h2 予約者一覧
-    -if@products_host.present?
+    -if@products_host.present?&&@purchase.present?
       -@products_host.each do |host|
         .main-user-box-introduction__bottom__reserve-introduction
           =link_to product_path(host.id) do
