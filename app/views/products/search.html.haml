@@ -1,6 +1,6 @@
 =render "header"
 .search-wrapper
-  -if @products.present?
+  -if @products.present? && params[:q] ==""
     %p #{@search.conditions.first.values.first.value}の結果
     .category-show-wrapper-product__container
       -@products.each do |product|

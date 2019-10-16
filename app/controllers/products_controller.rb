@@ -73,8 +73,10 @@ end
     # gon.all_variables
   end
   def search
+    
         @search = Product.ransack(params[:q]) #ransackメソッド推奨
         @products = @search.result.includes(:category, :address)
+      
   end
 
   def select_category

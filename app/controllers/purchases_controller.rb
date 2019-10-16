@@ -41,6 +41,7 @@ class PurchasesController < ApplicationController
   def create
     if @reserve.count>= params[:purchase][:member].to_i
         @purchase =Purchase.create(purchase_params)
+        # @purchase =Purchase.new(purchase_params)
         
         redirect_to pay_reserve_purchases_path
     else
@@ -49,6 +50,8 @@ class PurchasesController < ApplicationController
     end
   end
   def show
+    
+    # @purchase = Purchase.create(member: params[:member],price: params[:price])
     @purchase=Purchase.last
     @reserve =Reserve.find(params[:reserve_id])
     @product=Product.find(@reserve.product_id)
@@ -68,7 +71,8 @@ class PurchasesController < ApplicationController
     redirect_to pay_reserve_purchases_path
   end
   def pay
-    @purchase =Purchase.last
+    
+    @purchase = Purchase.last
     price =@purchase.price
     Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
     Payjp::Charge.create(
@@ -82,19 +86,22 @@ class PurchasesController < ApplicationController
     ChatMember.create(user_id:@product.user_id,chat_room_id:@chat_room.id)
     ChatMember.create(user_id:@user.id,chat_room_id:@chat_room.id)
     if @reserve.count>= @purchase.member
-    @reserve.update(count:@reserve.count - @purchase.member)
+       @reserve.update(count:@reserve.count - @purchase.member)
     end
     if @reserve.count == 0
-     @reserve.update(status:2,count:@reserve.count - @purchase.member)
+       @reserve.update(status:2,count:@reserve.count - @purchase.member)
     
     end
     redirect_to root_path
   end
   def destroy 
-    @purchase =Purchase.last
+    @purchase= Purchase.find(params[:id])
+    @reserve =Reserve.find(params[:reserve_id])
+    @reserve.update(count:"#{@reserve.count+ @purchase.member}")
     @purchase.destroy
-    @reserve =Reserve.find(@purchase.reserve_id)
-    @reserve.update(status:1)
+    if @reserve.status ==2
+       @reserve.update(status:1)
+    end
     redirect_to users_path
   end
   private

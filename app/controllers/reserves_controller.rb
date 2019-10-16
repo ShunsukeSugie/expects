@@ -34,6 +34,7 @@ class ReservesController < ApplicationController
   end
   gon.counts =counts
 else
+  binding.pry
   flash.now[:error] = 'ただいま受付できません'
   redirect_to product_path(@product.id),flash: {error:'ただいま受付できません' }
 end
@@ -59,7 +60,8 @@ end
     gon.status = statuses
 
   else
-  redirect_to root_path,flash: {ban:'不正なアクセスです' }
+    
+     redirect_to root_path,flash: {ban:'不正なアクセスです' }
   end
   end
   def create
