@@ -2,6 +2,7 @@ class ReservesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_product, only: [:edit,:create,:reserve_params]
   def index
+    
     @product = Product.find(params[:product_id])
   if @product.reserves.present?&&@product.reserves.where(status:1).present?
     @reserves = @product.reserves
