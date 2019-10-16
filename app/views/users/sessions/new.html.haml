@@ -1,3 +1,6 @@
+.new-header
+  .newheader__logo
+    = link_to "experiene",root_path,class:"header_logo"
 .login-wrapper
   %h2 Log in
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
@@ -15,4 +18,5 @@
         = f.label :remember_me
     .actions
       = f.submit "Log in",class:"login-button"
+      =link_to"Sign up",new_user_registration_path,class:"sign-up"
   = render "users/shared/links"

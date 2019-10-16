@@ -1,7 +1,7 @@
 .login-wrapper{
   height:500px;
   width:500px;
-  margin:100px auto;
+  margin:0 auto;
   text-align:center;
   
   h2{
@@ -18,7 +18,7 @@
     input{
       height:30px;
       font-size:18px;
-      padding:5px;
+      padding:10px;
       border-radius:$radius;
     }
      
@@ -29,8 +29,16 @@
    color:white;
    width:70px;
    padding:5px;
+   margin-right:20px;
    border-radius:$radius;
   }
-  
+  .sign-up{
+    background:$button-color;
+    color:white;
+    width:70px;
+    padding:6px;
+    height:30px;
+    border-radius:$radius;
+  }
 
 }
