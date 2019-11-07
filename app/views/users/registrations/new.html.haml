@@ -72,6 +72,7 @@
             必須
           %br/
         .form-user__collection
+          -# = raw sprintf(u.date_select(:birth, use_month_numbers: true, start_year: 1930, end_year: (Time.now.year), default: Date.new(1989, 1, 1),:class =>"bootstrap-date-only-width" ,date_separator: '%s'), '年 ', '月 ') + '日'
           = raw sprintf(u.date_select(:birth, use_month_numbers: true, start_year: 1930, end_year: (Time.now.year), default: Date.new(1989, 1, 1),:class =>"bootstrap-date-only-width" ,date_separator: '%s'), '年 ', '月 ') + '日'
         = f.submit "登録する",class:"form--submit"
           
